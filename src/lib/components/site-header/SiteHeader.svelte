@@ -1,9 +1,20 @@
+<script lang="ts">
+	let { isLoggedIn = false } = $props();
+</script>
+
 <header>
 	<h1>Hand & Foot</h1>
 
 	<menu>
 		<ul>
-			<li><button type="button">Help</button></li>
+			<li><a href="/how-to">Help</a></li>
+			{#if isLoggedIn}
+				<li>
+					<form action="/auth?/logout" method="POST">
+						<button type="submit">Logout</button>
+					</form>
+				</li>
+			{/if}
 		</ul>
 	</menu>
 </header>

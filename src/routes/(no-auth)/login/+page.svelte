@@ -1,1 +1,29 @@
 <h2>Login</h2>
+
+<form action="/auth?/login" method="POST">
+	<div>
+		<label for="email">Email:</label>
+		<input
+			required
+			id="email"
+			type="email"
+			name="login:email"
+			autocomplete="email"
+			inputmode="email"
+		/>
+	</div>
+
+	<div>
+		<label for="password">Password:</label>
+		<input
+			required
+			id="password"
+			type="password"
+			name="login:password"
+			autocomplete="current-password"
+			inputmode="text"
+		/>
+	</div>
+
+	<button type="submit">Submit</button>
+</form>
