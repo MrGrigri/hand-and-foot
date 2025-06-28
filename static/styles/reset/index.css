@@ -1,0 +1,110 @@
+:is(*) {
+	min-inline-size: 0;
+}
+
+:is(*, *::before, *::after) {
+	box-sizing: inherit;
+}
+
+:is(html) {
+	font-family: var(--_body-font-family);
+	text-size-adjust: none;
+	box-sizing: border-box;
+	interpolate-size: allow-keywords;
+}
+
+:is(body) {
+	min-height: 100dvh;
+	line-height: 1.5;
+}
+
+:is(body, h1, h2, h3, h4, h5, h6, p, figure, fieldset, blockquote, dl, dd, menu) {
+	margin: 0;
+}
+
+:is(h1, h2, h3, h4, h5, h6, button, input, label) {
+	line-height: 1;
+}
+
+:is(h1, h2, h3, h4, h5, h6) {
+	font-family: var(--_heading-font-family);
+	text-wrap: balance;
+}
+
+:is(hr) {
+	border: none;
+	border-block-end: 1px solid;
+	inline-size: 100%;
+}
+
+:is(p, li, figcaption) {
+	text-wrap: pretty;
+	max-width: var(--_text-max-width);
+}
+
+:is(fieldset) {
+	border: var(--_border-width) var(--_border-style) var(--_border-color);
+}
+
+:is(legend) {
+	padding-inline: 1ch;
+}
+
+:is(input, button, textarea, select) {
+	font-family: inherit;
+	font-size: inherit;
+}
+
+:is(button, select):not(:disabled) {
+	cursor: pointer;
+}
+
+:is(a:not([class])) {
+	color: var(--_anchor-color);
+	text-decoration: underline;
+	text-underline-offset: var(--_anchor-underline-offset-enter);
+}
+
+:is(ul[role='list']:not([class]), ol[role='list']):not([class]) {
+	list-style-type: '';
+	margin: 0;
+	padding: 0;
+}
+
+:is(menu:not([class])) {
+	display: flex;
+	inline-size: 100%;
+}
+
+:is(blockquote, menu) {
+	padding: 0;
+}
+
+:is(img, picture) {
+	max-width: 100%;
+	display: block;
+}
+
+:is(code, pre, kbd) {
+	font-family: var(--_code-font-family);
+}
+
+:is(table, math, time[datetime*=':']) {
+	font-variant-numeric: tabular-nums lining-nums;
+}
+
+:is(table) {
+	border-collapse: collapse;
+}
+
+:is(summary) {
+	cursor: pointer;
+}
+
+:is(dialog) {
+	border: var(--_border-width) var(--_border-style) var(--_border-color);
+}
+
+:is(:target) {
+	scroll-margin-block-start: 5rlh;
+}

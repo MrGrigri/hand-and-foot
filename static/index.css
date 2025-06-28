@@ -1,0 +1,5 @@
+@import './styles/reset/vars.css' layer(reset);
+@import './styles/reset/index.css' layer(reset);
+@import './styles/reset/animations.css' layer(reset);
+
+@layer reset, app;

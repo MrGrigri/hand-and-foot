@@ -1,0 +1,80 @@
+@media (prefers-reduced-motion: no-preference) {
+	:is(html) {
+		scroll-behavior: smooth;
+	}
+
+	:is(a:not([class])) {
+		transition-property: text-underline-offset;
+		transition-duration: var(--_anchor-duration);
+		transition-timing-function: var(--_anchor-timing);
+	}
+
+	:is(a:not([class]):hover) {
+		text-underline-offset: var(--_anchor-underline-offset-exit);
+	}
+
+	:is(details) {
+		interpolate-size: allow-keywords;
+
+		&::details-content {
+			block-size: 0;
+			overflow-y: clip;
+			transition-property: content-visibility, block-size;
+			transition-duration: var(--_details-duration);
+			transition-timing-function: var(--_details-timing);
+			transition-behavior: allow-discrete;
+		}
+
+		&[open] {
+			&::details-content {
+				block-size: auto;
+
+				@starting-style {
+					opacity: 0;
+					block-size: 0;
+				}
+			}
+		}
+	}
+
+	:is(dialog) {
+		opacity: 0;
+		translate: var(--_dialog-translate-exit);
+		scale: var(--_dialog-scale-exit);
+
+		transition-property: opacity, translate, scale, overlay, display;
+		transition-duration: var(--_dialog-duration);
+		transition-timing-function: var(--_dialog-timing);
+		transition-behavior: allow-discrete;
+		transform-origin: center center;
+
+		&::backdrop {
+			opacity: 0;
+			background-color: var(--_dialog-backdrop-color);
+			transition-property: opacity;
+			transition-duration: var(--_dialog-duration);
+			transition-timing-function: var(--_dialog-timing);
+			transition-behavior: allow-discrete;
+		}
+
+		&[open] {
+			opacity: 1;
+			translate: var(--_dialog-translate);
+			scale: var(--_dialog-scale);
+
+			&::backdrop {
+				opacity: 1;
+
+				@starting-style {
+					opacity: 0;
+				}
+			}
+
+			@starting-style {
+				opacity: 0;
+				translate: var(--_dialog-translate-enter);
+				scale: var(--_dialog-scale-enter);
+			}
+		}
+	}
+}

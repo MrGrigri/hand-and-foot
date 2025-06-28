@@ -1,0 +1,30 @@
+:root {
+	--_body-font-family: var(--reset-body-font-family, sans-serif);
+	--_heading-font-family: var(--reset-heading-font-family, serif);
+	--_code-font-family: var(--reset-code-font-family, monospace);
+
+	--_border-width: var(--reset-border-width, 1px);
+	--_border-color: var(--reset-border-color, #000000);
+	--_border-style: var(--reset-border-style, solid);
+
+	--_text-max-width: var(--reset-text-max-width, 65ch);
+
+	--_anchor-color: var(--reset-anchor-color, #0000ee);
+	--_anchor-duration: var(--reset-anchor-duration, 75ms);
+	--_anchor-underline-offset-enter: var(--reset-anchor-underline-offset-enter, 2px);
+	--_anchor-underline-offset-exit: var(--reset-anchor-underline-offset-exit, 4px);
+	--_anchor-timing: var(--reset-anchor-timing, ease-out);
+
+	--_details-duration: var(--reset-details-duration, 175ms);
+	--_details-timing: var(--reset-details-timing, ease-out);
+
+	--_dialog-backdrop-color: var(--reset-dialog-backdrop-color, rgb(0 0 0 / 0.2));
+	--_dialog-translate: var(--reset-dialog-translate, 0 0);
+	--_dialog-translate-enter: var(--reset-dialog-translate-enter, 0 -1rem);
+	--_dialog-translate-exit: var(--reset-dialog-translate-exit, 0 1rem);
+	--_dialog-scale: var(--reset-dialog-scale, 1);
+	--_dialog-scale-enter: var(--reset-dialog-scale-enter, 0.95);
+	--_dialog-scale-exit: var(--reset-dialog-scale-exit, 0.95);
+	--_dialog-duration: var(--reset-dialog-duration, 175ms);
+	--_dialog-timing: var(--reset-dialog-timing, ease-out);
+}

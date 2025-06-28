@@ -1,5 +1,7 @@
 <h2>Register</h2>
 
+<a href="/login">Login</a>
+
 <form action="/auth?/register" method="POST">
 	<div>
 		<label for="email">Email:</label>
