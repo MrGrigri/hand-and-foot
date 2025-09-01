@@ -31,9 +31,9 @@ export const actions: Actions = {
 			});
 		}
 
-		const { error } = await supabase.auth.signUp({ email, password });
+		const { error: supabaseError } = await supabase.auth.signUp({ email, password });
 
-		if (error) {
+		if (supabaseError) {
 			return fail(401, {
 				data: email,
 				errors: [{ supabase: 'User already exists' }]
