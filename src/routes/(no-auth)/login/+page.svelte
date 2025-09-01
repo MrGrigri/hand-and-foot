@@ -1,8 +1,12 @@
+<script lang="ts">
+	import { enhance } from '$app/forms';
+</script>
+
 <h2>Login</h2>
 
 <a href="/register">Register</a>
 
-<form action="/auth?/login" method="POST">
+<form action="/auth?/login" method="POST" use:enhance>
 	<div>
 		<label for="email">Email:</label>
 		<input

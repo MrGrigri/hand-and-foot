@@ -1,4 +1,4 @@
-import { redirect, type Actions } from '@sveltejs/kit';
+import { fail, redirect, type Actions } from '@sveltejs/kit';
 
 export const actions: Actions = {
 	login: async ({ request, locals: { supabase } }) => {
@@ -19,6 +19,11 @@ export const actions: Actions = {
 		const formData = await request.formData();
 		const email = formData.get('register:email') as string;
 		const password = formData.get('register:password') as string;
+
+		if (email === 'test@test.com') {
+			console.log(email, password);
+			return fail(400, { email, incorrect: true });
+		}
 
 		const { error } = await supabase.auth.signUp({ email, password });
 

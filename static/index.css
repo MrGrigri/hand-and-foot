@@ -2,4 +2,6 @@
 @import './styles/reset/index.css' layer(reset);
 @import './styles/reset/animations.css' layer(reset);
 
-@layer reset, app;
+@import './styles/utils/a11y.css' layer(a11y);
+
+@layer reset, a11y, app;
