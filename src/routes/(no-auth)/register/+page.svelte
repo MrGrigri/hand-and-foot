@@ -107,8 +107,8 @@
 			onclick={handleShowPasswordClick}>{passwordSwitchText}</button
 		>
 
-		<div id="rules">
-			<p>Password must meet the following conditions:</p>
+		<details id="rules" open>
+			<summary>Password must meet the following conditions:</summary>
 			{#each rules as rule}
 				<p role="presentation">
 					{#if passwordErrors.includes(rule.key) || !passwordInputIsDirty}
@@ -126,7 +126,7 @@
 					<span>{rule.errorDescription}</span>
 				</p>
 			{/each}
-		</div>
+		</details>
 
 		<p id="ruleStatus" role="alert" aria-live="polite" class="visually-hidden">
 			{passwordProgress} out of {rules.length} requirements complete
