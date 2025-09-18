@@ -4,4 +4,6 @@
 
 @import './styles/utils/a11y.css' layer(a11y);
 
-@layer reset, a11y, app;
+@import './styles/colors/index.css' layer(colors);
+
+@layer reset, a11y, colors, app;

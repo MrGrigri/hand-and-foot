@@ -1,3 +1,7 @@
 {
-	"cSpell.words": ["appspecific", "treeify"]
+	"cSpell.words": [
+		"appspecific",
+		"treeify"
+	],
+	"kiroAgent.configureMCP": "Disabled"
 }

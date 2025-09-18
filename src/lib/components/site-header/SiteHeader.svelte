@@ -10,6 +10,9 @@
 			<li><a href="/how-to">Help</a></li>
 			{#if isLoggedIn}
 				<li>
+					<a href="/dashboard">Dashboard</a>
+				</li>
+				<li>
 					<form action="/auth?/logout" method="POST">
 						<button type="submit">Logout</button>
 					</form>
