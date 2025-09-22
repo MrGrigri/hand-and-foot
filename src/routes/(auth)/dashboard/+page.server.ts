@@ -1,14 +1,10 @@
 import { getRandomNumber } from '$lib';
-import { database } from '$lib/supabaseClient';
+import { database } from '$lib/server/supabase/supabaseClient';
 import type { Games } from '$lib/types/database/games';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {
 	const { data: games, error: databaseError } = await database.from('games').select();
-
-	// await new Promise((resolve) => {
-	// 	setTimeout(resolve, 5000);
-	// });
 
 	if (databaseError) {
 		console.error(databaseError);

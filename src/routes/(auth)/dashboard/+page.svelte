@@ -1,25 +1,23 @@
 <script lang="ts">
-	// import { mdiChevronRight, mdiPencilOutline } from '@mdi/js';
+	import { mdiChevronRight, mdiPencilOutline } from '@mdi/js';
 
-	// import Icon from '$lib/components/icon/Icon.svelte';
-	// import { getRandomNumber } from '$lib/helpers';
-	// import type { Games } from '$lib/types/database/games';
+	import Icon from '$lib/components/icon/Icon.svelte';
+	import type { Games } from '$lib/types/database/games';
 
-	// import type { PageProps } from './$types';
+	import type { PageProps } from './$types';
 
-	// let { data }: PageProps = $props();
+	let { data }: PageProps = $props();
 
-	// const games: Games = $derived<Games>(data.games);
-	// const taglines: Array<string> = $derived<Array<string>>(data.taglines);
+	const games: Games = $derived<Games>(data.games);
+	const tagline: string = $derived<string>(data.tagline);
 </script>
 
 <h2>Game Scores</h2>
 
 <div>
-	<!-- if !navigating.complete} <p>loading games...</p> {:else  -->
-	<!-- {#if !games || games.length <= 0}
+	{#if !games || games.length <= 0}
 		<p>No games yet?</p>
-		<p>{taglines[getRandomNumber(0, taglines.length - 1)]}</p>
+		<p>{tagline}</p>
 		<button type="button">Add New Game</button>
 		<a href="/completed">View completed games</a>
 	{:else}
@@ -49,5 +47,5 @@
 			{/each}
 		</ul>
 		<button type="button">Add New Game</button>
-	{/if} -->
+	{/if}
 </div>
