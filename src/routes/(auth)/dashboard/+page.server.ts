@@ -1,5 +1,5 @@
 import { getRandomNumber } from '$lib';
-import { database } from '$lib/server/supabase/supabaseClient';
+import { database } from '$lib/supabase/create-client';
 import type { Games } from '$lib/types/database/games';
 import type { PageServerLoad } from './$types';
 
