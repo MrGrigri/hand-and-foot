@@ -1,3 +1,5 @@
+@import './styles/fonts/index.css';
+
 @import './styles/reset/vars.css' layer(reset);
 @import './styles/reset/index.css' layer(reset);
 @import './styles/reset/animations.css' layer(reset);
@@ -6,4 +8,12 @@
 
 @import './styles/colors/index.css' layer(colors);
 
-@layer reset, a11y, colors, app;
+@layer fonts, reset, a11y, colors, app;
+
+@layer reset {
+	:root {
+		--reset-heading-font-family: BespokeSlab;
+		--reset-code-font-family: FiraCode;
+		--reset-body-font-family: NebulaSans;
+	}
+}
