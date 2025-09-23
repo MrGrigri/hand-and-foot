@@ -1,0 +1,131 @@
+@font-face {
+	font-family: 'NebulaSans';
+	src:
+		url('../../fonts/nebula-sans/NebulaSans-Light.woff2') format('woff2'),
+		url('../../fonts/nebula-sans/NebulaSans-Light.ttf') format('truetype'),
+		url('../../fonts/nebula-sans/NebulaSans-Light.otf') format('opentype');
+	font-weight: 300;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'NebulaSans';
+	src:
+		url('../../fonts/nebula-sans/NebulaSans-LightItalic.woff2') format('woff2'),
+		url('../../fonts/nebula-sans/NebulaSans-LightItalic.ttf') format('truetype'),
+		url('../../fonts/nebula-sans/NebulaSans-LightItalic.otf') format('opentype');
+	font-weight: 300;
+	font-display: swap;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'NebulaSans';
+	src:
+		url('../../fonts/nebula-sans/NebulaSans-Book.woff2') format('woff2'),
+		url('../../fonts/nebula-sans/NebulaSans-Book.ttf') format('truetype'),
+		url('../../fonts/nebula-sans/NebulaSans-Book.otf') format('opentype');
+	font-weight: 400;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'NebulaSans';
+	src:
+		url('../../fonts/nebula-sans/NebulaSans-BookItalic.woff2') format('woff2'),
+		url('../../fonts/nebula-sans/NebulaSans-BookItalic.ttf') format('truetype'),
+		url('../../fonts/nebula-sans/NebulaSans-BookItalic.otf') format('opentype');
+	font-weight: 400;
+	font-display: swap;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'NebulaSans';
+	src:
+		url('../../fonts/nebula-sans/NebulaSans-Medium.woff2') format('woff2'),
+		url('../../fonts/nebula-sans/NebulaSans-Medium.ttf') format('truetype'),
+		url('../../fonts/nebula-sans/NebulaSans-Medium.otf') format('opentype');
+	font-weight: 500;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'NebulaSans';
+	src:
+		url('../../fonts/nebula-sans/NebulaSans-MediumItalic.woff2') format('woff2'),
+		url('../../fonts/nebula-sans/NebulaSans-MediumItalic.ttf') format('truetype'),
+		url('../../fonts/nebula-sans/NebulaSans-MediumItalic.otf') format('opentype');
+	font-weight: 500;
+	font-display: swap;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'NebulaSans';
+	src:
+		url('../../fonts/nebula-sans/NebulaSans-Semibold.woff2') format('woff2'),
+		url('../../fonts/nebula-sans/NebulaSans-Semibold.ttf') format('truetype'),
+		url('../../fonts/nebula-sans/NebulaSans-Semibold.otf') format('opentype');
+	font-weight: 600;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'NebulaSans';
+	src:
+		url('../../fonts/nebula-sans/NebulaSans-SemiboldItalic.woff2') format('woff2'),
+		url('../../fonts/nebula-sans/NebulaSans-SemiboldItalic.ttf') format('truetype'),
+		url('../../fonts/nebula-sans/NebulaSans-SemiboldItalic.otf') format('opentype');
+	font-weight: 600;
+	font-display: swap;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'NebulaSans';
+	src:
+		url('../../fonts/nebula-sans/NebulaSans-Bold.woff2') format('woff2'),
+		url('../../fonts/nebula-sans/NebulaSans-Bold.ttf') format('truetype'),
+		url('../../fonts/nebula-sans/NebulaSans-Bold.otf') format('opentype');
+	font-weight: 700;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'NebulaSans';
+	src:
+		url('../../fonts/nebula-sans/NebulaSans-BoldItalic.woff2') format('woff2'),
+		url('../../fonts/nebula-sans/NebulaSans-BoldItalic.ttf') format('truetype'),
+		url('../../fonts/nebula-sans/NebulaSans-BoldItalic.otf') format('opentype');
+	font-weight: 700;
+	font-display: swap;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'NebulaSans';
+	src:
+		url('../../fonts/nebula-sans/NebulaSans-Black.woff2') format('woff2'),
+		url('../../fonts/nebula-sans/NebulaSans-Black.ttf') format('truetype'),
+		url('../../fonts/nebula-sans/NebulaSans-Black.otf') format('opentype');
+	font-weight: 900;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'NebulaSans';
+	src:
+		url('../../fonts/nebula-sans/NebulaSans-BlackItalic.woff2') format('woff2'),
+		url('../../fonts/nebula-sans/NebulaSans-BlackItalic.ttf') format('truetype'),
+		url('../../fonts/nebula-sans/NebulaSans-BlackItalic.otf') format('opentype');
+	font-weight: 900;
+	font-display: swap;
+	font-style: italic;
+}
