@@ -1,0 +1,47 @@
+@font-face {
+	font-family: 'FiraCode';
+	src: url('../../fonts/fira-code/FiraCode-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'FiraCode';
+	src: url('../../fonts/fira-code/FiraCode-Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'FiraCode';
+	src: url('../../fonts/fira-code/FiraCode-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'FiraCode';
+	src: url('../../fonts/fira-code/FiraCode-SemiBold.ttf') format('truetype');
+	font-weight: 600;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'FiraCode';
+	src: url('../../fonts/fira-code/FiraCode-Bold.ttf') format('truetype');
+	font-weight: 700;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'FiraCode';
+	src: url('../../fonts/fira-code/FiraCode-VariableFont_wght.ttf') format('truetype');
+	font-weight: 300 800;
+	font-display: swap;
+	font-style: normal;
+}

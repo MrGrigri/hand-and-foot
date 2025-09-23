@@ -1,0 +1,131 @@
+@font-face {
+	font-family: 'BespokeSlab';
+	src:
+		url('../../fonts/bespoke-slab/BespokeSlab-Light.woff2') format('woff2'),
+		url('../../fonts/bespoke-slab/BespokeSlab-Light.woff') format('woff'),
+		url('../../fonts/bespoke-slab/BespokeSlab-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'BespokeSlab';
+	src:
+		url('../../fonts/bespoke-slab/BespokeSlab-LightItalic.woff2') format('woff2'),
+		url('../../fonts/bespoke-slab/BespokeSlab-LightItalic.woff') format('woff'),
+		url('../../fonts/bespoke-slab/BespokeSlab-LightItalic.ttf') format('truetype');
+	font-weight: 300;
+	font-display: swap;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'BespokeSlab';
+	src:
+		url('../../fonts/bespoke-slab/BespokeSlab-Regular.woff2') format('woff2'),
+		url('../../fonts/bespoke-slab/BespokeSlab-Regular.woff') format('woff'),
+		url('../../fonts/bespoke-slab/BespokeSlab-Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'BespokeSlab';
+	src:
+		url('../../fonts/bespoke-slab/BespokeSlab-Italic.woff2') format('woff2'),
+		url('../../fonts/bespoke-slab/BespokeSlab-Italic.woff') format('woff'),
+		url('../../fonts/bespoke-slab/BespokeSlab-Italic.ttf') format('truetype');
+	font-weight: 400;
+	font-display: swap;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'BespokeSlab';
+	src:
+		url('../../fonts/bespoke-slab/BespokeSlab-Medium.woff2') format('woff2'),
+		url('../../fonts/bespoke-slab/BespokeSlab-Medium.woff') format('woff'),
+		url('../../fonts/bespoke-slab/BespokeSlab-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'BespokeSlab';
+	src:
+		url('../../fonts/bespoke-slab/BespokeSlab-MediumItalic.woff2') format('woff2'),
+		url('../../fonts/bespoke-slab/BespokeSlab-MediumItalic.woff') format('woff'),
+		url('../../fonts/bespoke-slab/BespokeSlab-MediumItalic.ttf') format('truetype');
+	font-weight: 500;
+	font-display: swap;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'BespokeSlab';
+	src:
+		url('../../fonts/bespoke-slab/BespokeSlab-Bold.woff2') format('woff2'),
+		url('../../fonts/bespoke-slab/BespokeSlab-Bold.woff') format('woff'),
+		url('../../fonts/bespoke-slab/BespokeSlab-Bold.ttf') format('truetype');
+	font-weight: 700;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'BespokeSlab';
+	src:
+		url('../../fonts/bespoke-slab/BespokeSlab-BoldItalic.woff2') format('woff2'),
+		url('../../fonts/bespoke-slab/BespokeSlab-BoldItalic.woff') format('woff'),
+		url('../../fonts/bespoke-slab/BespokeSlab-BoldItalic.ttf') format('truetype');
+	font-weight: 700;
+	font-display: swap;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'BespokeSlab';
+	src:
+		url('../../fonts/bespoke-slab/BespokeSlab-Extrabold.woff2') format('woff2'),
+		url('../../fonts/bespoke-slab/BespokeSlab-Extrabold.woff') format('woff'),
+		url('../../fonts/bespoke-slab/BespokeSlab-Extrabold.ttf') format('truetype');
+	font-weight: 800;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'BespokeSlab';
+	src:
+		url('../../fonts/bespoke-slab/BespokeSlab-ExtraboldItalic.woff2') format('woff2'),
+		url('../../fonts/bespoke-slab/BespokeSlab-ExtraboldItalic.woff') format('woff'),
+		url('../../fonts/bespoke-slab/BespokeSlab-ExtraboldItalic.ttf') format('truetype');
+	font-weight: 800;
+	font-display: swap;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'BespokeSlab';
+	src:
+		url('../../fonts/bespoke-slab/BespokeSlab-Variable.woff2') format('woff2'),
+		url('../../fonts/bespoke-slab/BespokeSlab-Variable.woff') format('woff'),
+		url('../../fonts/bespoke-slab/BespokeSlab-Variable.ttf') format('truetype');
+	font-weight: 300 800;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'BespokeSlab';
+	src:
+		url('../../fonts/bespoke-slab/BespokeSlab-VariableItalic.woff2') format('woff2'),
+		url('../../fonts/bespoke-slab/BespokeSlab-VariableItalic.woff') format('woff'),
+		url('../../fonts/bespoke-slab/BespokeSlab-VariableItalic.ttf') format('truetype');
+	font-weight: 300 800;
+	font-display: swap;
+	font-style: italic;
+}
