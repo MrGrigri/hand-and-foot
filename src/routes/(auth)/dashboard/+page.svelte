@@ -1,41 +1,68 @@
 <script lang="ts">
 	import { mdiChevronRight, mdiPencilOutline } from '@mdi/js';
+	import { faker } from '@faker-js/faker';
 
 	import Icon from '$lib/components/icon/Icon.svelte';
 	import type { Games } from '$lib/types/database/games';
 
 	import type { PageProps } from './$types';
+	import type { SubmitFunction } from '@sveltejs/kit';
+	import { enhance } from '$app/forms';
 
-	let { data }: PageProps = $props();
+	let { data, form }: PageProps = $props();
+	let dialogElement = $state<HTMLDialogElement>();
+	let newGameTitle = $state<string>();
+	let isSubmitting = $state(false);
 
 	const games: Games = $derived<Games>(data.games);
 	const tagline: string = $derived<string>(data.tagline);
+
+	const handleAddNewGameClick = () => {
+		newGameTitle = `${faker.word.adjective()} ${faker.word.noun()}`;
+		dialogElement?.showModal();
+	};
+
+	const handleCloseModalClick = () => {
+		dialogElement?.close();
+	};
+
+	const handleAddNewGameSubmit: SubmitFunction = () => {
+		isSubmitting = true;
+
+		return async ({ update }) => {
+			await update();
+
+			isSubmitting = false;
+			dialogElement?.close();
+		};
+	};
+
+	const getDateString = (date: string): string => new Date(date).toDateString();
 </script>
 
-<h2>Game Scores</h2>
+<header aria-label="Current games">
+	<h2>Your Games</h2>
+	<button type="button" onclick={handleAddNewGameClick}>Add New Game</button>
+</header>
 
 <div>
 	{#if !games || games.length <= 0}
-		<p>No games yet?</p>
-		<p>{tagline}</p>
-		<button type="button">Add New Game</button>
-		<a href="/completed">View completed games</a>
+		<p>No games yet? {tagline}</p>
 	{:else}
-		<ul class="games">
+		<ul>
 			{#each games as game (game.id)}
-				<li id={game.id} class="game">
-					<p class="title">{game.title}</p>
-					<p class="subtitle">
-						<time datetime={new Date(game.last_played_at).toDateString()}
-							>{new Date(game.last_played_at).toDateString()}</time
+				<li id={game.id}>
+					<p>{game.title}</p>
+					<p>
+						<time datetime={getDateString(game.last_played_at)}
+							>{getDateString(game.last_played_at)}</time
 						>
 					</p>
-					<menu class="actions">
-						<button class="action" type="button" aria-label="Edit details for Xxxx">
+					<menu>
+						<button type="button" aria-label="Edit details for Xxxx">
 							<Icon path={mdiPencilOutline} />
 						</button>
 						<a
-							class="action"
 							href={`/dashboard/${game.id}`}
 							aria-label="View more details for Xxxx"
 							data-sveltekit-prefetch
@@ -46,6 +73,35 @@
 				</li>
 			{/each}
 		</ul>
-		<button type="button">Add New Game</button>
 	{/if}
 </div>
+
+<dialog bind:this={dialogElement}>
+	<header>
+		<p>Add new game</p>
+		<button onclick={handleCloseModalClick}>Close</button>
+	</header>
+	<form method="POST" use:enhance={handleAddNewGameSubmit}>
+		<div>
+			<label for="title">Game Title</label>
+			<input required id="title" name="title" type="text" value={newGameTitle} />
+		</div>
+
+		<fieldset>
+			<legend>Number of players</legend>
+
+			<div>
+				<input id="4_players" name="players" value="4" type="radio" />
+				<label for="4_players">4</label>
+
+				<input id="6_players" name="players" value="6" type="radio" checked />
+				<label for="6_players">6</label>
+
+				<input id="8_players" name="players" value="8" type="radio" />
+				<label for="8_players">8</label>
+			</div>
+		</fieldset>
+
+		<button type="submit" disabled={isSubmitting ?? null}>Add new game</button>
+	</form>
+</dialog>

@@ -1,4 +1,14 @@
 {
 	"cSpell.words": ["appspecific", "Fira", "treeify", "wght"],
-	"kiroAgent.configureMCP": "Disabled"
+	"kiroAgent.configureMCP": "Disabled",
+	"sqltools.connections": [
+		{
+			"ssh": "Disabled",
+			"previewLimit": 50,
+			"server": "localhost",
+			"driver": "PostgreSQL",
+			"name": "supabase:hand-and-foot",
+			"connectString": "postgresql://postgres:20OlFh1Tl0sWqfmp@db.odmtnqdhylkhgirjhlyp.supabase.co:5432/postgres"
+		}
+	]
 }
