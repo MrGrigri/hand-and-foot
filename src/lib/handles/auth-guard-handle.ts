@@ -4,7 +4,7 @@ import { type Handle, redirect } from '@sveltejs/kit';
 
 export const authGuardHandle: Handle = async ({ event, resolve }) => {
 	if (event.url.pathname.startsWith('/.well-known')) {
-		return new Response(null, { status: 204 }); // Return empty response with 204 No Content
+		return new Response(null, { status: 204 });
 	}
 
 	const { session, user } = await event.locals.safeGetSession();

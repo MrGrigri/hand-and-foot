@@ -8,7 +8,8 @@ declare global {
 	namespace App {
 		// interface Error {}
 		interface Locals {
-			supabase: SupabaseClient<Database>;
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			supabase: SupabaseClient<Database, any, GenericSchema>;
 			safeGetSession: () => Promise<{ session: Session | null; user: User | null }>;
 			session: Session | null;
 			user: User | null;
