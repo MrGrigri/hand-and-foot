@@ -14,8 +14,6 @@
 	let newGameTitle = $state<string>();
 	let isSubmitting = $state(false);
 
-	$inspect(form);
-
 	const games: Games = $derived<Games>(data.games);
 	const tagline: string = $derived<string>(data.tagline);
 
