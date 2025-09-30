@@ -36,8 +36,9 @@ export const actions: Actions = {
 
 		if (!formResult.success) {
 			return fail(400, {
+				success: false,
 				data: { title, players },
-				errors: formResult.error.issues.map((e) => ({ [e.path[0]]: e.message }))
+				error: formResult.error.issues.map((e) => ({ [e.path[0]]: e.message }))
 			});
 		}
 
@@ -46,16 +47,18 @@ export const actions: Actions = {
 			.insert([{ title, players }])
 			.select();
 
-		if (supabaseError) {
+		if (supabaseError || !data) {
 			return fail(400, {
+				success: false,
 				data: { title, players },
-				errors: supabaseError.message
+				error: supabaseError.message || 'Something went wrong'
 			});
 		}
 
 		return {
 			success: true,
-			data
+			data,
+			error: null
 		};
 	}
 };

@@ -8,6 +8,7 @@
 	import type { PageProps } from './$types';
 	import type { SubmitFunction } from '@sveltejs/kit';
 	import { enhance } from '$app/forms';
+	import { addToast } from '$lib/stores';
 
 	let { data, form }: PageProps = $props();
 	let dialogElement = $state<HTMLDialogElement>();
@@ -26,10 +27,17 @@
 		dialogElement?.close();
 	};
 
-	const handleAddNewGameSubmit: SubmitFunction = () => {
+	const handleAddNewGameSubmit: SubmitFunction = ({ cancel }) => {
 		isSubmitting = true;
 
-		return async ({ update }) => {
+		return async ({ result, update }) => {
+			if (result.type === 'failure') {
+				isSubmitting = false;
+				dialogElement?.close();
+				addToast('Something went wrong', 'error');
+				return cancel();
+			}
+
 			await update();
 
 			isSubmitting = false;
@@ -44,6 +52,10 @@
 	<h2>Your Games</h2>
 	<button type="button" onclick={handleAddNewGameClick}>Add New Game</button>
 </header>
+
+{#if form}
+	<pre>{JSON.stringify(form, null, 2)}</pre>
+{/if}
 
 <div>
 	{#if !games || games.length <= 0}

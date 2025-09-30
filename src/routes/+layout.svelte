@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { invalidate } from '$app/navigation';
 	import SiteHeader from '$lib/components/site-header/SiteHeader.svelte';
+	import ToastContainer from '$lib/components/toast/ToastContainer.svelte';
 
 	let { data: propData, children } = $props();
 	let { session, supabase } = $derived(propData);
@@ -18,3 +19,5 @@
 <main>
 	{@render children()}
 </main>
+
+<ToastContainer />
