@@ -8,6 +8,7 @@
 <h2>Login</h2>
 
 <a href="/register">Register</a>
+<a href="/reset">Forgot password?</a>
 
 <form method="POST" use:enhance>
 	<div>

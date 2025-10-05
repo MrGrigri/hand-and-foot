@@ -71,6 +71,7 @@
 <h2>Register</h2>
 
 <a href="/login">Login</a>
+<a href="/reset">Forgot password?</a>
 
 <form method="POST" use:enhance>
 	<div>
