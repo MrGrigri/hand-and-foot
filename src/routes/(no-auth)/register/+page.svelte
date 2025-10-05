@@ -2,7 +2,7 @@
 	import { enhance } from '$app/forms';
 	import Icon from '$lib/components/icon/Icon.svelte';
 	import { mdiCheck, mdiClose } from '@mdi/js';
-	import type { PageProps } from './$types';
+	import type { PageProps, SubmitFunction } from './$types';
 	import { validateRules, type Rules } from './password-rules';
 
 	type InputEvent<T> = Event & { currentTarget: EventTarget & T };
@@ -17,6 +17,17 @@
 	let passwordInputIsDirty: boolean = $state(false);
 	let passwordSwitchText: 'Show' | 'Hide' = $state('Show');
 	let passwordIsValid = $state(false);
+	let isSubmitting = $state(false);
+
+	const handleRegisterSubmit: SubmitFunction = (e) => {
+		isSubmitting = true;
+
+		return async ({ update }) => {
+			isSubmitting = false;
+
+			await update();
+		};
+	};
 
 	let { form }: PageProps = $props();
 
@@ -73,7 +84,7 @@
 <a href="/login">Login</a>
 <a href="/reset">Forgot password?</a>
 
-<form method="POST" use:enhance>
+<form method="POST" use:enhance={handleRegisterSubmit}>
 	<div>
 		<label for="email">Email:</label>
 		<input
@@ -132,8 +143,10 @@
 		</p>
 	</div>
 
-	<button type="submit" disabled={!formIsValid || null} aria-disabled={!formIsValid || null}
-		>Submit</button
+	<button
+		type="submit"
+		disabled={!formIsValid || isSubmitting || null}
+		aria-disabled={!formIsValid || isSubmitting || null}>Submit</button
 	>
 </form>
 
