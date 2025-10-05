@@ -1,7 +1,9 @@
 <script lang="ts">
+	import { mdiCheck, mdiClose } from '@mdi/js';
+
 	import { enhance } from '$app/forms';
 	import Icon from '$lib/components/icon/Icon.svelte';
-	import { mdiCheck, mdiClose } from '@mdi/js';
+
 	import type { PageProps, SubmitFunction } from './$types';
 	import { validateRules, type Rules } from './password-rules';
 

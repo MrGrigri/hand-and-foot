@@ -1,8 +1,10 @@
+import { fail, type Actions } from '@sveltejs/kit';
+import z from 'zod/v4';
+
 import { getRandomNumber } from '$lib';
 import type { Game } from '$lib/types/database/games';
-import { fail, type Actions } from '@sveltejs/kit';
+
 import type { PageServerLoad } from './$types';
-import z from 'zod/v4';
 
 export const load: PageServerLoad = async ({ locals: { supabase } }) => {
 	const { data: games, error: databaseError } = await supabase.from('games').select<'*', Game>('*');

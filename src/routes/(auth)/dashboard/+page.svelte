@@ -1,14 +1,13 @@
 <script lang="ts">
-	import { mdiChevronRight, mdiPencilOutline } from '@mdi/js';
 	import { faker } from '@faker-js/faker';
-
-	import Icon from '$lib/components/icon/Icon.svelte';
-	import type { Games } from '$lib/types/database/games';
-
-	import type { PageProps } from './$types';
+	import { mdiChevronRight, mdiPencilOutline } from '@mdi/js';
 	import type { SubmitFunction } from '@sveltejs/kit';
+
 	import { enhance } from '$app/forms';
+	import Icon from '$lib/components/icon/Icon.svelte';
 	import { addToast } from '$lib/stores';
+	import type { Games } from '$lib/types/database/games';
+	import type { PageProps } from './$types';
 
 	let { data, form }: PageProps = $props();
 	let dialogElement = $state<HTMLDialogElement>();

@@ -1,20 +1,18 @@
 import {
-	mdiHelpCircleOutline,
-	mdiInformationSlabCircleOutline,
+	mdiAlertOutline,
 	mdiAlertRhombusOutline,
-	mdiAlertOutline
+	mdiHelpCircleOutline,
+	mdiInformationSlabCircleOutline
 } from '@mdi/js';
-import { SvelteMap } from 'svelte/reactivity';
 
-export type ToastTypes = 'default' | 'info' | 'warning' | 'error';
-export type Toast = {
-	id: string;
-	message: string;
-	type: ToastTypes;
-};
-export type AddToastFunction = (message: string, type?: ToastTypes, delay?: number) => void;
-export type RemoveToastFunction = (toastId: string) => string;
-export type GetToastIconFunction = (type: ToastTypes) => string;
+import type {
+	AddToastFunction,
+	GetToastIconFunction,
+	RemoveToastFunction,
+	Toast
+} from '$lib/types/toast/toast';
+
+import { SvelteMap } from 'svelte/reactivity';
 
 export const toasts = new SvelteMap<string, Toast>();
 export const timeoutIds = new SvelteMap<string, number>();

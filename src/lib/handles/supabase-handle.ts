@@ -1,5 +1,6 @@
 import { createServerClient } from '@supabase/ssr';
 import type { Handle } from '@sveltejs/kit';
+
 import {
 	PUBLIC_SUPABASE_ANON_KEY as supabaseAnonKey,
 	PUBLIC_SUPABASE_URL as supabaseUrl

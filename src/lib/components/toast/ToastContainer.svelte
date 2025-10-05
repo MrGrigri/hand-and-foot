@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { mdiClose } from '@mdi/js';
+
 	import { getToastIcon, removeToast, toasts } from '$lib/stores';
+
 	import Icon from '../icon/Icon.svelte';
 	import Toast from './Toast.svelte';
 </script>
