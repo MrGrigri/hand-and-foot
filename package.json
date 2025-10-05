@@ -14,7 +14,7 @@
 		"lint": "prettier --check . && eslint .",
 		"test:unit": "vitest",
 		"test": "npm run test:unit -- --run",
-		"postbuild": "npx svelte-sitemap --out-dir .vercel/output/static --domain https://handandfoot.app"
+		"postbuild": "npx svelte-sitemap --out-dir .vercel/output/static --domain https://handandfoot.app; cp .vercel/output/static/sitemap.xml static/sitemap.xml"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.2.5",
