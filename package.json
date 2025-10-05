@@ -47,5 +47,9 @@
 		"@vercel/speed-insights": "^1.2.0",
 		"zod": "^3.25.67",
 		"zod-form-data": "^3.0.0"
+	},
+	"volta": {
+		"node": "24.9.0",
+		"npm": "11.6.1"
 	}
 }

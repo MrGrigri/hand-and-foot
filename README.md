@@ -1,38 +1,26 @@
-# sv
+# Hand & Foot Application
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This is a private repo for the [Hand & Foot application](https://handandfoot.app) created and maintained with ❤️ by Michael Richins.
 
-## Creating a project
+## Development
 
-If you're seeing this, you've probably already done this step. Congrats!
+### `.env.local` Example
 
-```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+You have to create a `.env.local` file that will never be checked into source control.
 
 ```bash
-npm run dev
+# Public environment variables
+PUBLIC_SUPABASE_URL="{SUPABASE_URL}"
+PUBLIC_SUPABASE_ANON_KEY="{SUPABASE_ANON_KEY}"
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+# Private environment variables
+PRIVATE_SUPABASE_DB_PASSWORD="{SUPABASE_DB_PASSWORD}"
 ```
 
-## Building
+### NPM Scripts
 
-To create a production version of your app:
+`npm run dev`: Starts the dev server [locally](http://localhost:5173/).
 
-```bash
-npm run build
-```
+### Users
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+You can create your own user via the [Supabase dashboard](https://supabase.com/dashboard/project/odmtnqdhylkhgirjhlyp/auth/users) or through the [UI](http://localhost:5173/register)
