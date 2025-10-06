@@ -5,7 +5,8 @@
 	import Icon from '$lib/components/icon/Icon.svelte';
 
 	import type { PageProps, SubmitFunction } from './$types';
-	import { validateRules, type Rules } from './password-rules';
+	import { validateRules } from './password-rules';
+	import type { Rule, Rules } from '$lib/types/rules/rules';
 
 	type InputEvent<T> = Event & { currentTarget: EventTarget & T };
 
@@ -71,7 +72,7 @@
 		passwordProgress = validationProgress;
 		passwordInputIsDirty = true;
 
-		const firstRule = rules.find((rule) => rule.key === validationErrors[0]);
+		const firstRule = rules.find((rule: Rule) => rule.key === validationErrors[0]);
 
 		currentTarget.setCustomValidity(
 			validationErrors.length > 0 && firstRule ? firstRule.errorDescription : ''
@@ -80,6 +81,12 @@
 		passwordIsValid = !firstRule;
 	};
 </script>
+
+<svelte:head>
+	<title>Hand & Foot - Register</title>
+
+	<meta name="description" content="Register for an account" />
+</svelte:head>
 
 <h2>Register</h2>
 

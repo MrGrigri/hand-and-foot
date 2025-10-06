@@ -18,6 +18,12 @@
 	};
 </script>
 
+<svelte:head>
+	<title>Hand & Foot - Login</title>
+
+	<meta name="description" content="Login to your account" />
+</svelte:head>
+
 <h2>Login</h2>
 
 <a href="/register">Register</a>

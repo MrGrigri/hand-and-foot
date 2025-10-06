@@ -16,6 +16,12 @@
 	};
 </script>
 
+<svelte:head>
+	<title>Hand & Foot - Reset Password</title>
+
+	<meta name="description" content="Reset your password" />
+</svelte:head>
+
 <hgroup>
 	<h2>Reset Password</h2>
 	<p>

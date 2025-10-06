@@ -1,6 +1,5 @@
 {
 	"cSpell.words": ["appspecific", "Fira", "treeify", "urlset", "wght"],
-	"kiroAgent.configureMCP": "Disabled",
 	"sqltools.connections": [
 		{
 			"ssh": "Disabled",
@@ -10,5 +9,8 @@
 			"name": "supabase:hand-and-foot",
 			"connectString": "postgresql://postgres:20OlFh1Tl0sWqfmp@db.odmtnqdhylkhgirjhlyp.supabase.co:5432/postgres"
 		}
-	]
+	],
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "always"
+	}
 }

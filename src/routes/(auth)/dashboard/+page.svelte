@@ -47,6 +47,12 @@
 	const getDateString = (date: string): string => new Date(date).toDateString();
 </script>
 
+<svelte:head>
+	<title>Hand & Foot - Dashboard</title>
+
+	<meta name="description" content="User dashboard for all of their games" />
+</svelte:head>
+
 <header aria-label="Current games">
 	<h2>Your Games</h2>
 	<button type="button" onclick={handleAddNewGameClick}>Add New Game</button>
