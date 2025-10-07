@@ -24,5 +24,5 @@ export const login = form(loginSchema, async ({ email, password }) => {
 		}
 	}
 
-	redirect(303, 'dashboard');
+	return redirect(303, 'dashboard');
 });
