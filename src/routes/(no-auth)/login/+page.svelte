@@ -19,6 +19,8 @@
 			isSubmitting = true;
 
 			await submit();
+
+			addToast('You are being logged in', 'info');
 		} catch (error) {
 			if (isHttpError(error)) {
 				addToast(error.body.message, 'error');
