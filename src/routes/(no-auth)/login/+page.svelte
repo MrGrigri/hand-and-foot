@@ -1,20 +1,33 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
-
-	import type { PageProps, SubmitFunction } from './$types';
-
-	let { form }: PageProps = $props();
+	import { login } from './login.remote';
+	import { loginSchema } from './login';
+	import { addToast } from '$lib/stores';
+	import { isHttpError } from '@sveltejs/kit';
 
 	let isSubmitting = $state(false);
+	let showPassword: boolean = $state(false);
+	let passwordSwitchText: 'Show' | 'Hide' = $state('Show');
 
-	const handleLoginSubmit: SubmitFunction = (e) => {
-		isSubmitting = true;
+	let { email, password } = login.fields;
 
-		return async ({ update }) => {
+	const handleShowPasswordClick = () => {
+		showPassword = !showPassword;
+	};
+
+	const handleLoginEnhance = async ({ submit }: any) => {
+		try {
+			isSubmitting = true;
+
+			await submit();
+		} catch (error) {
+			if (isHttpError(error)) {
+				addToast(error.body.message, 'error');
+			} else {
+				addToast('Something went wrong', 'error');
+			}
+		} finally {
 			isSubmitting = false;
-
-			await update();
-		};
+		}
 	};
 </script>
 
@@ -29,28 +42,36 @@
 <a href="/register">Register</a>
 <a href="/reset">Forgot password?</a>
 
-<form method="POST" use:enhance={handleLoginSubmit}>
-	<div>
-		<label for="email">Email:</label>
-		<input required id="email" type="email" name="email" autocomplete="email" inputmode="email" />
-	</div>
+<svelte:boundary>
+	<form {...login.preflight(loginSchema).enhance(handleLoginEnhance)}>
+		<div>
+			<label for="email">Email:</label>
+			<input id="email" autocomplete="email" inputmode="email" {...email.as('email')} />
+			{#each email.issues() ?? [] as issue}
+				<p>{issue.message}</p>
+			{/each}
+		</div>
 
-	<div>
-		<label for="password">Password:</label>
-		<input
-			id="password"
-			type="password"
-			name="password"
-			autocomplete="current-password"
-			inputmode="text"
-		/>
-	</div>
+		<div>
+			<label for="password">Password:</label>
+			<input
+				id="password"
+				autocomplete="current-password"
+				inputmode="text"
+				{...password.as(showPassword ? 'text' : 'password')}
+			/>
+			<button
+				type="button"
+				role="switch"
+				aria-checked={showPassword}
+				aria-label="{passwordSwitchText} password"
+				onclick={handleShowPasswordClick}>{passwordSwitchText}</button
+			>
+			{#each password.issues() ?? [] as issue}
+				<p>{issue.message}</p>
+			{/each}
+		</div>
 
-	<button type="submit" disabled={isSubmitting || null}>Submit</button>
-</form>
-
-<div id="errors" role="alert" aria-live="polite">
-	{#if form?.errors}
-		<p>{Object.values(form.errors[0])[0]}</p>
-	{/if}
-</div>
+		<button type="submit" disabled={isSubmitting || null}>Submit</button>
+	</form>
+</svelte:boundary>
