@@ -1,7 +1,9 @@
 // See https://svelte.dev/docs/kit/types#app.d.ts
 
-import type { Session, SupabaseClient, User } from '@supabase/supabase-js';
+import type { JwtPayload, Session, SupabaseClient } from '@supabase/supabase-js';
 import type { Database } from './database.types.ts';
+
+type Undefined<T> = T | null | undefined;
 
 // for information about these interfaces
 declare global {
@@ -10,9 +12,9 @@ declare global {
 		interface Locals {
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			supabase: SupabaseClient<Database, any, GenericSchema>;
-			safeGetSession: () => Promise<{ session: Session | null; user: User | null }>;
-			session: Session | null;
-			user: User | null;
+			safeGetSession: () => Promise<{ session: Undefined<Session>; claims: Undefined<JwtPayload> }>;
+			session: Undefined<Session>;
+			claims: Undefined<JwtPayload>;
 		}
 		interface PageData {
 			session: Session | null;
