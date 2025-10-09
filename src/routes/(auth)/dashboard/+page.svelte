@@ -58,10 +58,6 @@
 	<button type="button" onclick={handleAddNewGameClick}>Add New Game</button>
 </header>
 
-{#if form}
-	<pre>{JSON.stringify(form, null, 2)}</pre>
-{/if}
-
 <div>
 	{#if !games || games.length <= 0}
 		<p>No games yet? {tagline}</p>
@@ -101,7 +97,7 @@
 	<form method="POST" use:enhance={handleAddNewGameSubmit}>
 		<div>
 			<label for="title">Game Title</label>
-			<input required id="title" name="title" type="text" value={newGameTitle} />
+			<input required id="title" name="title" type="text" placeholder={newGameTitle} />
 		</div>
 
 		<fieldset>

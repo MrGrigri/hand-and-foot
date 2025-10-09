@@ -2,7 +2,7 @@ import { createServerClient } from '@supabase/ssr';
 import type { Handle } from '@sveltejs/kit';
 
 import {
-	PUBLIC_SUPABASE_ANON_KEY as supabaseAnonKey,
+	PUBLIC_SUPABASE_API_KEY as supabaseAnonKey,
 	PUBLIC_SUPABASE_URL as supabaseUrl
 } from '$env/static/public';
 
@@ -19,20 +19,15 @@ export const supabaseHandle: Handle = async ({ event, resolve }) => {
 	});
 
 	event.locals.safeGetSession = async () => {
-		const {
-			data: { session }
-		} = await event.locals.supabase.auth.getSession();
+		const { data: sessionData } = await event.locals.supabase.auth.getSession();
 
-		if (!session) return { session: null, user: null };
+		if (!sessionData) return { session: null, claims: null };
 
-		const {
-			data: { user },
-			error
-		} = await event.locals.supabase.auth.getUser();
+		const { data: claimsData, error } = await event.locals.supabase.auth.getClaims();
 
-		if (error) return { session: null, user: null };
+		if (error) return { session: null, claims: null };
 
-		return { session, user };
+		return { session: sessionData?.session, claims: claimsData?.claims };
 	};
 
 	return resolve(event, {

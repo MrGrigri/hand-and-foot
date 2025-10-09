@@ -8,11 +8,11 @@ export const authGuardHandle: Handle = async ({ event, resolve }) => {
 		return new Response(null, { status: 204 });
 	}
 
-	const { session, user } = await event.locals.safeGetSession();
+	const { session, claims: user } = await event.locals.safeGetSession();
 	const pathName = event.url.pathname;
 
 	event.locals.session = session;
-	event.locals.user = user;
+	event.locals.claims = user;
 
 	const isAuthenticatedRoute = stringContainsAnyFromArray(pathName, AUTHENTICATED_ROUTES);
 	const isNotAuthenticated = !event.locals.session && isAuthenticatedRoute;
