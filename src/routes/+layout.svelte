@@ -5,7 +5,7 @@
 	import { SUPABASE_AUTH } from '$lib/constants';
 
 	let { data: propData, children } = $props();
-	let { session, supabase } = $derived(propData);
+	let { session, supabase, claims } = $derived(propData);
 
 	$effect(() => {
 		const { data } = supabase.auth.onAuthStateChange((_, newSession) => {
@@ -16,7 +16,7 @@
 	});
 </script>
 
-<SiteHeader isLoggedIn={!!session} />
+<SiteHeader isLoggedIn={!!claims} />
 
 <main>
 	{@render children()}

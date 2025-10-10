@@ -5,6 +5,7 @@
 
 	import { enhance } from '$app/forms';
 	import Icon from '$lib/components/icon/Icon.svelte';
+	import { capitalizeAllWords } from '$lib/helpers';
 	import { addToast } from '$lib/stores';
 	import type { Games } from '$lib/types/database/games';
 	import type { PageProps } from './$types';
@@ -18,7 +19,7 @@
 	const tagline: string = $derived<string>(data.tagline);
 
 	const handleAddNewGameClick = () => {
-		newGameTitle = `${faker.word.adjective()} ${faker.word.noun()}`;
+		newGameTitle = capitalizeAllWords(`${faker.word.adjective()} ${faker.word.noun()}`);
 		dialogElement?.showModal();
 	};
 
