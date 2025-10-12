@@ -1,6 +1,6 @@
 import { form, getRequestEvent } from '$app/server';
 import { error, redirect } from '@sveltejs/kit';
-import { loginSchema } from './login';
+import { loginSchema } from './login-schema';
 
 export const login = form(loginSchema, async ({ email, password }) => {
 	const {

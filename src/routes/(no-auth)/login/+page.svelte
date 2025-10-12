@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { login } from './login.remote';
-	import { loginSchema } from './login';
+	import { loginSchema } from './login-schema';
 	import { addToast } from '$lib/stores';
 	import { isHttpError } from '@sveltejs/kit';
 
