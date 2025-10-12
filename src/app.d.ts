@@ -3,7 +3,7 @@
 import type { JwtPayload, Session, SupabaseClient } from '@supabase/supabase-js';
 import type { Database } from './database.types.ts';
 
-type Nullable<T> = T | null | undefined;
+type Nullish<T> = T | null | undefined;
 
 // for information about these interfaces
 declare global {
@@ -12,9 +12,9 @@ declare global {
 		interface Locals {
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			supabase: SupabaseClient<Database, any, GenericSchema>;
-			safeGetSession: () => Promise<{ session: Nullable<Session>; claims: Nullable<JwtPayload> }>;
-			session: Nullable<Session>;
-			claims: Nullable<JwtPayload>;
+			safeGetSession: () => Promise<{ session: Nullish<Session>; claims: Nullish<JwtPayload> }>;
+			session: Nullish<Session>;
+			claims: Nullish<JwtPayload>;
 		}
 		interface PageData {
 			session: Session | null;
