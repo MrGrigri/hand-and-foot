@@ -10,7 +10,7 @@
 	import type { Games } from '$lib/types/database/games';
 	import type { PageProps } from './$types';
 
-	let { data, form }: PageProps = $props();
+	let { data }: PageProps = $props();
 	let dialogElement = $state<HTMLDialogElement>();
 	let newGameTitle = $state<string>();
 	let isSubmitting = $state(false);

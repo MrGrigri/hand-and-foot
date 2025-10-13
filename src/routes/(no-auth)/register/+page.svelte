@@ -1,43 +1,51 @@
 <script lang="ts">
 	import { mdiCheck, mdiClose } from '@mdi/js';
+	import { isHttpError } from '@sveltejs/kit';
 
-	import { enhance } from '$app/forms';
 	import Icon from '$lib/components/icon/Icon.svelte';
 
-	import type { PageProps, SubmitFunction } from './$types';
-	import { validateRules } from './password-rules';
+	import { register } from '$lib/api/auth/register.remote';
+	import { registerSchema } from '$lib/schemas/register-schema';
+	import { addToast } from '$lib/stores';
 	import type { Rule, Rules } from '$lib/types/rules/rules';
+	import type { InputEvent } from '$lib/types/utils/input-event';
 
-	type InputEvent<T> = Event & { currentTarget: EventTarget & T };
+	import { validateRules } from './password-rules';
 
+	let isSubmitting = $state(false);
 	let showPassword: boolean = $state(false);
 	let formIsValid: boolean = $state(false);
 	let emailValue: string = $state('');
 	let emailIsValid: boolean = $state(false);
-	let passwordValue: string = $state('');
 	let passwordProgress: number = $state(0);
 	let passwordErrors: Array<string> = $state([]);
 	let passwordInputIsDirty: boolean = $state(false);
 	let passwordSwitchText: 'Show' | 'Hide' = $state('Show');
 	let passwordIsValid = $state(false);
-	let isSubmitting = $state(false);
 
-	const handleRegisterSubmit: SubmitFunction = (e) => {
-		isSubmitting = true;
+	let { email, password } = register.fields;
 
-		return async ({ update }) => {
+	const handleRegisterEnhance = async ({ submit }: any) => {
+		try {
+			isSubmitting = true;
+
+			await submit();
+
+			addToast('You are being registered', 'info');
+		} catch (error) {
+			if (isHttpError(error)) {
+				addToast(error.body.message, 'error');
+			} else {
+				addToast('Something went wrong', 'error');
+			}
+		} finally {
 			isSubmitting = false;
-
-			await update();
-		};
+		}
 	};
-
-	let { form }: PageProps = $props();
 
 	$effect(() => {
 		passwordSwitchText = showPassword ? 'Hide' : 'Show';
 		formIsValid = emailIsValid && passwordIsValid;
-		passwordValue = form?.errors ? '' : passwordValue;
 	});
 
 	const rules: Rules = [
@@ -93,34 +101,34 @@
 <a href="/login">Login</a>
 <a href="/reset">Forgot password?</a>
 
-<form method="POST" use:enhance={handleRegisterSubmit}>
+<form {...register.preflight(registerSchema).enhance(handleRegisterEnhance)}>
 	<div>
 		<label for="email">Email:</label>
 		<input
 			required
 			id="email"
-			name="email"
 			autocomplete="email"
 			inputmode="email"
-			type="email"
-			value={form?.data ?? emailValue}
 			oninput={handleEmailInput}
+			{...email.as('email')}
 		/>
+		{#if email.issues()?.[0]}
+			{@const issue = email.issues()?.[0]}
+
+			<p>{issue?.message}</p>
+		{/if}
 	</div>
 
 	<div>
 		<label for="password">Password:</label>
-		<!--  -->
 		<input
 			required
 			id="password"
-			name="password"
 			autocomplete="new-password"
 			inputmode="text"
-			type={showPassword ? 'text' : 'password'}
-			value={passwordValue}
 			oninput={handlePasswordInput}
 			aria-describedby="rules"
+			{...password.as(showPassword ? 'text' : 'password')}
 		/>
 		<button
 			type="button"
@@ -129,6 +137,10 @@
 			aria-label="{passwordSwitchText} password"
 			onclick={handleShowPasswordClick}>{passwordSwitchText}</button
 		>
+		{#if password.issues()?.[0]}
+			{@const issue = password.issues()?.[0]}
+			<p>{issue?.message}</p>
+		{/if}
 
 		<details id="rules" open>
 			<summary>Password must meet the following conditions:</summary>
@@ -155,12 +167,7 @@
 	<button
 		type="submit"
 		disabled={!formIsValid || isSubmitting || null}
-		aria-disabled={!formIsValid || isSubmitting || null}>Submit</button
+		aria-disabled={!formIsValid || isSubmitting || null}
+		aria-busy={isSubmitting}>Submit</button
 	>
 </form>
-
-<div id="errors" role="alert" aria-live="polite">
-	{#if form?.errors}
-		<p>{Object.values(form.errors[0])[0]}</p>
-	{/if}
-</div>

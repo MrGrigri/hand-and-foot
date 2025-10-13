@@ -40,6 +40,10 @@ export const removeToast: RemoveToastFunction = (toastId) => {
 	return toastId;
 };
 
+export const removeAllToasts = (): void => {
+	toasts.forEach((toast) => toasts.delete(toast.id));
+};
+
 export const getToastIcon: GetToastIconFunction = (type) => {
 	return {
 		default: mdiHelpCircleOutline,
