@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { login } from './login.remote';
-	import { loginSchema } from './login-schema';
+	import { login } from '$lib/api/auth';
+	import { loginSchema } from '$lib/schemas';
 	import { addToast } from '$lib/stores';
 	import { isHttpError } from '@sveltejs/kit';
 
@@ -49,6 +49,11 @@
 		<div>
 			<label for="email">Email:</label>
 			<input id="email" autocomplete="email" inputmode="email" {...email.as('email')} />
+			{#if email.issues()?.[0]}
+				{@const issue = email.issues()?.[0]}
+
+				<p>{issue?.message}</p>
+			{/if}
 			{#each email.issues() ?? [] as issue}
 				<p>{issue.message}</p>
 			{/each}
@@ -69,11 +74,12 @@
 				aria-label="{passwordSwitchText} password"
 				onclick={handleShowPasswordClick}>{passwordSwitchText}</button
 			>
-			{#each password.issues() ?? [] as issue}
-				<p>{issue.message}</p>
-			{/each}
+			{#if password.issues()?.[0]}
+				{@const issue = password.issues()?.[0]}
+				<p>{issue?.message}</p>
+			{/if}
 		</div>
 
-		<button type="submit" disabled={isSubmitting || null}>Submit</button>
+		<button type="submit" disabled={isSubmitting || null} aria-busy={isSubmitting}>Submit</button>
 	</form>
 </svelte:boundary>
