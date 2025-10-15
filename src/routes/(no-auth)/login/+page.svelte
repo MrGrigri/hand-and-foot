@@ -4,6 +4,7 @@
 	import { login } from '$lib/api/auth';
 	import { loginSchema } from '$lib/schemas';
 	import { addToast } from '$lib/stores';
+	import type { RemoteFormEnhanceCallback } from '$lib/types/utils/enhance-callback';
 	import type { InputEvent } from '$lib/types/utils/input-event';
 
 	let isSubmitting = $state(false);
@@ -35,7 +36,7 @@
 		showPassword = !showPassword;
 	};
 
-	const handleLoginEnhance = async ({ submit }: any) => {
+	const handleLoginEnhance: RemoteFormEnhanceCallback = async ({ submit }) => {
 		try {
 			isSubmitting = true;
 
