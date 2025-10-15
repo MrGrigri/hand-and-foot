@@ -1,22 +1,21 @@
 <script lang="ts">
 	import { faker } from '@faker-js/faker';
-	import { mdiChevronRight, mdiPencilOutline } from '@mdi/js';
-	import type { SubmitFunction } from '@sveltejs/kit';
+	import { mdiChevronRight } from '@mdi/js';
+	import { isHttpError, type SubmitFunction } from '@sveltejs/kit';
 
-	import { enhance } from '$app/forms';
+	import { getGames } from '$lib/api/games/get-games.remote';
+	import { getRandomTagline } from '$lib/api/taglines/get-random-tagline.remote';
 	import Icon from '$lib/components/icon/Icon.svelte';
 	import { capitalizeAllWords } from '$lib/helpers';
 	import { addToast } from '$lib/stores';
-	import type { Games } from '$lib/types/database/games';
-	import type { PageProps } from './$types';
+	import { addGame } from '$lib/api/games/add-game.remote';
+	import { addGameSchema } from '$lib/schemas/add-game-schema';
+	import type { RemoteFormEnhanceCallback } from '$lib/types/utils/enhance-callback';
 
-	let { data }: PageProps = $props();
 	let dialogElement = $state<HTMLDialogElement>();
 	let newGameTitle = $state<string>();
 	let isSubmitting = $state(false);
-
-	const games: Games = $derived<Games>(data.games);
-	const tagline: string = $derived<string>(data.tagline);
+	let getGamesResponse = getGames();
 
 	const handleAddNewGameClick = () => {
 		newGameTitle = capitalizeAllWords(`${faker.word.adjective()} ${faker.word.noun()}`);
@@ -27,22 +26,22 @@
 		dialogElement?.close();
 	};
 
-	const handleAddNewGameSubmit: SubmitFunction = ({ cancel }) => {
-		isSubmitting = true;
+	const handleAddNewGameSubmit: RemoteFormEnhanceCallback = async ({ submit }) => {
+		try {
+			isSubmitting = true;
 
-		return async ({ result, update }) => {
-			if (result.type === 'failure') {
-				isSubmitting = false;
-				dialogElement?.close();
-				addToast('Something went wrong', 'error');
-				return cancel();
-			}
+			await submit();
 
-			await update();
+			addToast('Game added', 'info');
 
-			isSubmitting = false;
 			dialogElement?.close();
-		};
+		} catch (error) {
+			if (isHttpError(error)) {
+				addToast(error.body.message, 'error');
+			}
+		} finally {
+			isSubmitting = false;
+		}
 	};
 
 	const getDateString = (date: string): string => new Date(date).toDateString();
@@ -60,30 +59,27 @@
 </header>
 
 <div>
-	{#if !games || games.length <= 0}
-		<p>No games yet? {tagline}</p>
+	{#if getGamesResponse.error}
+		<p>Something went wrong</p>
+	{:else if getGamesResponse.loading}
+		<p>Loading...</p>
 	{:else}
 		<ul>
-			{#each games as game (game.id)}
-				<li id={game.id}>
+			{#each getGamesResponse.current as game (game.id)}
+				<li>
 					<p>{game.title}</p>
 					<p>
 						<time datetime={getDateString(game.last_played_at)}
 							>{getDateString(game.last_played_at)}</time
 						>
 					</p>
-					<menu>
-						<button type="button" aria-label="Edit details for Xxxx">
-							<Icon path={mdiPencilOutline} />
-						</button>
-						<a
-							href={`/dashboard/${game.id}`}
-							aria-label="View more details for Xxxx"
-							data-sveltekit-prefetch
-						>
-							<Icon path={mdiChevronRight} />
-						</a>
-					</menu>
+					<a
+						href={`/dashboard/${game.id}`}
+						aria-label={`View more details for ${game.title}`}
+						data-sveltekit-prefetch
+					>
+						<Icon path={mdiChevronRight} />
+					</a>
 				</li>
 			{/each}
 		</ul>
@@ -95,7 +91,7 @@
 		<p>Add new game</p>
 		<button onclick={handleCloseModalClick}>Close</button>
 	</header>
-	<form method="POST" use:enhance={handleAddNewGameSubmit}>
+	<form {...addGame.preflight(addGameSchema).enhance(handleAddNewGameSubmit)}>
 		<div>
 			<label for="title">Game Title</label>
 			<input required id="title" name="title" type="text" placeholder={newGameTitle} />

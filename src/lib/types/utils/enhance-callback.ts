@@ -1,4 +1,7 @@
-import type { RemoteForm } from '@sveltejs/kit';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import type { RemoteForm, RemoteFormInput } from '@sveltejs/kit';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type RemoteFormEnhanceCallback = Parameters<RemoteForm<any, any>['enhance']>[0];
+export type RemoteFormEnhanceCallback = Parameters<RemoteForm<RemoteFormInput, any>['enhance']>[0];
+
+export type EnhanceCallback<ExtendedForm extends RemoteForm<RemoteFormInput | void, any>> =
+	Parameters<ExtendedForm['enhance']>[0];
