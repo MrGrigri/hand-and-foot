@@ -37,6 +37,6 @@ export const actions: Actions = {
 			});
 		}
 
-		redirect(303, '/login');
+		return redirect(303, '/login');
 	}
 };

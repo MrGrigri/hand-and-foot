@@ -10,19 +10,18 @@ export const register = form(registerSchema, async ({ email, password }) => {
 	const { error: supabaseError } = await supabase.auth.signUp({ email, password });
 
 	if (supabaseError) {
-		console.error(supabaseError.code);
 		switch (supabaseError.code) {
 			case 'signup_disabled':
-				return error(401, {
+				return error(503, {
 					message: 'Currently, new users are not permitted to sign up'
 				});
 			case 'user_already_registered':
 			case 'email_exists':
-				return error(401, {
+				return error(403, {
 					message: 'Email already registered, please sign in'
 				});
 			default:
-				return error(401, {
+				return error(500, {
 					message: 'Something went wrong'
 				});
 		}

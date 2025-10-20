@@ -10,8 +10,7 @@ export const getGames = query(async () => {
 	const { data: games, error: supabaseError } = await supabase.from('games').select<'*', Game>('*');
 
 	if (supabaseError) {
-		console.error(supabaseError.code);
-		return error(401, {
+		return error(500, {
 			message: 'Something went wrong'
 		});
 	}

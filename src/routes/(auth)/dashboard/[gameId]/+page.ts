@@ -6,7 +6,7 @@ const isV4UUID = (id: string): boolean =>
 
 export const load: PageLoad = ({ params }) => {
 	if (!isV4UUID(params.gameId)) {
-		throw error(404, {
+		return error(400, {
 			message: 'Not a valid ID'
 		});
 	}

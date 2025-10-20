@@ -18,7 +18,7 @@ export const login = form(loginSchema, async ({ email, password }) => {
 					message: 'Username or password incorrect'
 				});
 			default:
-				return error(401, {
+				return error(500, {
 					message: 'Something went wrong'
 				});
 		}

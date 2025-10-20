@@ -14,13 +14,12 @@ export const addGame = form(addGameSchema, async ({ title, players }) => {
 		.select();
 
 	if (supabaseError) {
-		console.error(supabaseError.code);
-		return error(401, {
+		return error(500, {
 			message: 'Something went wrong'
 		});
 	}
 
 	await getGames().refresh();
 
-	return redirect(301, `/dashboard/${data[0].id}`);
+	return redirect(303, `/dashboard/${data[0].id}`);
 });
