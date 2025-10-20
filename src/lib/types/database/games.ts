@@ -3,7 +3,7 @@ export type Game = {
 	current_round: string;
 	id: string;
 	last_played_at: string;
-	num_players: string;
+	players: string;
 	owner_id: string;
 	title: string;
 };

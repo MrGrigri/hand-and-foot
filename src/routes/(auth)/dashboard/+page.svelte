@@ -17,6 +17,8 @@
 	let isSubmitting = $state(false);
 	let getGamesResponse = getGames();
 
+	let { title, players } = addGame.fields;
+
 	const handleAddNewGameClick = () => {
 		newGameTitle = capitalizeAllWords(`${faker.word.adjective()} ${faker.word.noun()}`);
 		dialogElement?.showModal();
@@ -66,14 +68,17 @@
 	{:else}
 		<ul>
 			{#each getGamesResponse.current as game (game.id)}
-				<li>
-					<p>{game.title}</p>
-					<p>
+				<li class="card">
+					<p class="title">{game.title}</p>
+					<p class="date">
 						<time datetime={getDateString(game.last_played_at)}
 							>{getDateString(game.last_played_at)}</time
 						>
 					</p>
+					<p class="players">{game.players}</p>
+					<p class="round">{game.current_round}</p>
 					<a
+						class="action"
 						href={`/dashboard/${game.id}`}
 						aria-label={`View more details for ${game.title}`}
 						data-sveltekit-prefetch
@@ -94,24 +99,66 @@
 	<form {...addGame.preflight(addGameSchema).enhance(handleAddNewGameSubmit)}>
 		<div>
 			<label for="title">Game Title</label>
-			<input required id="title" name="title" type="text" placeholder={newGameTitle} />
+			<input required id="title" {...title.as('text')} placeholder={newGameTitle} />
+			{#if title.issues()?.[0]}
+				{@const issue = title.issues()?.[0]}
+				<p>{issue?.message}</p>
+			{/if}
 		</div>
 
 		<fieldset>
 			<legend>Number of players</legend>
 
 			<div>
-				<input id="4_players" name="players" value="4" type="radio" />
-				<label for="4_players">4</label>
-
-				<input id="6_players" name="players" value="6" type="radio" checked />
-				<label for="6_players">6</label>
-
-				<input id="8_players" name="players" value="8" type="radio" />
-				<label for="8_players">8</label>
+				{#each ['4', '6', '8'] as player}
+					<input
+						id={`${player}_players`}
+						{...players.as('radio', player)}
+						checked={player === '6' || null}
+						type="radio"
+					/>
+					<label for={`${player}_players`}>{player}</label>
+				{/each}
+				{#if players.issues()?.[0]}
+					{@const issue = players.issues()?.[0]}
+					<p>{issue?.message}</p>
+				{/if}
 			</div>
 		</fieldset>
 
 		<button type="submit" disabled={isSubmitting ?? null}>Add new game</button>
 	</form>
 </dialog>
+
+<style>
+	.card {
+		display: grid;
+		grid-template-areas:
+			'title title title action'
+			'date players round action';
+		grid-template-columns: auto auto auto auto;
+		align-items: center;
+
+		.title {
+			grid-area: title;
+		}
+
+		.date {
+			grid-area: date;
+		}
+
+		.players {
+			grid-area: players;
+		}
+
+		.round {
+			grid-area: round;
+		}
+
+		.action {
+			grid-area: action;
+			display: flex;
+			align-items: center;
+		}
+	}
+</style>

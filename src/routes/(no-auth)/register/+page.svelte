@@ -2,12 +2,12 @@
 	import { mdiCheck, mdiClose } from '@mdi/js';
 	import { isHttpError } from '@sveltejs/kit';
 
-	import Icon from '$lib/components/icon/Icon.svelte';
-
 	import { register } from '$lib/api/auth/register.remote';
+	import Icon from '$lib/components/icon/Icon.svelte';
 	import { registerSchema } from '$lib/schemas/register-schema';
 	import { addToast } from '$lib/stores';
 	import type { Rule, Rules } from '$lib/types/rules/rules';
+	import type { RemoteFormEnhanceCallback } from '$lib/types/utils/enhance-callback';
 	import type { InputEvent } from '$lib/types/utils/input-event';
 
 	import { validateRules } from './password-rules';
@@ -25,7 +25,7 @@
 
 	let { email, password } = register.fields;
 
-	const handleRegisterEnhance = async ({ submit }: any) => {
+	const handleRegisterEnhance: RemoteFormEnhanceCallback = async ({ submit }: any) => {
 		try {
 			isSubmitting = true;
 
@@ -49,15 +49,23 @@
 	});
 
 	const rules: Rules = [
-		{ key: 'minLength', regex: /^.{12,}$/, errorDescription: '12 characters minimum' },
-		{ key: 'lowerCase', regex: /[a-z]/, errorDescription: 'At lease 1 lowercase character' },
-		{ key: 'upperCase', regex: /[A-Z]/, errorDescription: 'At lease 1 uppercase character' },
+		{ key: 'minLength', regex: /^.{12,}$/, errorDescription: 'At least 12 characters' },
+		{
+			key: 'lowerCase',
+			regex: /(?=(.*[a-z]){1,})/,
+			errorDescription: 'At lease 1 lowercase character'
+		},
+		{
+			key: 'upperCase',
+			regex: /(?=(.*[A-Z]){1,})/,
+			errorDescription: 'At lease 1 uppercase character'
+		},
 		{
 			key: 'special',
-			regex: /[!@#$%^&*()_\-+={[}\];:/?.><]/,
+			regex: /(?=(.*[!@#$%^&*\(\)_\-+=\{\}\[\];:'",<.>/?]){1,})/,
 			errorDescription: 'At lease 1 special character'
 		},
-		{ key: 'number', regex: /\d/, errorDescription: 'At lease 1 number character' }
+		{ key: 'number', regex: /(?=(.*[\d]){1,})/, errorDescription: 'At lease 1 number character' }
 	];
 
 	const handleEmailInput = ({ currentTarget }: InputEvent<HTMLInputElement>) => {
