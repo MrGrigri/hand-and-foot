@@ -1,18 +1,29 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
+	import { isHttpError } from '@sveltejs/kit';
 
-	import type { SubmitFunction } from './$types';
+	import { reset } from '$lib/api/auth';
+	import { resetSchema } from '$lib/schemas/reset-schema';
+	import { addToast } from '$lib/stores';
+	import type { RemoteFormEnhanceCallback } from '$lib/types/utils/enhance-callback';
 
 	let isSubmitting = $state(false);
 
-	const handleResetSubmit: SubmitFunction = (e) => {
-		isSubmitting = true;
+	let { email } = reset.fields;
 
-		return async ({ update }) => {
+	const handleResetSubmit: RemoteFormEnhanceCallback = async ({ submit }) => {
+		try {
+			isSubmitting = true;
+
+			await submit();
+		} catch (error) {
+			if (isHttpError(error)) {
+				addToast(error.body.message, 'error');
+			} else {
+				addToast('Something went wrong', 'error');
+			}
+		} finally {
 			isSubmitting = false;
-
-			await update();
-		};
+		}
 	};
 </script>
 
@@ -30,10 +41,10 @@
 	</p>
 </hgroup>
 
-<form method="POST" use:enhance={handleResetSubmit}>
+<form {...reset.preflight(resetSchema).enhance(handleResetSubmit)}>
 	<div>
 		<label for="email">Email:</label>
-		<input required id="email" name="email" autocomplete="email" inputmode="email" type="email" />
+		<input required id="email" autocomplete="email" inputmode="email" {...email.as('email')} />
 	</div>
 
 	<button type="submit" disabled={isSubmitting || null}>Send email</button>
