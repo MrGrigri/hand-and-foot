@@ -17,13 +17,19 @@ PUBLIC_SUPABASE_API_KEY="{SUPABASE_ANON_KEY}"
 PRIVATE_SUPABASE_DB_PASSWORD="{SUPABASE_DB_PASSWORD}"
 ```
 
+### Creating Certificates
+
+You need to create some certificates so that development can run on HTTPS.
+
+`npm run certs:install`: Installs the certificates using [mkcert](https://mkcert.org/) and via [homebrew](https://brew.sh/). You may need to give execution operation to the [create-certs.sh](file://./.dev/create-certs.sh) and [check-certs.sh](file://./.dev/check-certs.sh) files so that NPM can execute them properly. You can achieve this by running `chmod +x ./.dev/create-certs.sh ./.dev/check-certs.sh`.
+
 ### NPM Scripts
 
-`npm run dev`: Starts the dev server [locally](http://localhost:5173/).
+`npm run dev`: Starts the dev server [locally](https://localhost:5173/).
 
 ### Users
 
-You can create your own user via the [Supabase dashboard](https://supabase.com/dashboard/project/odmtnqdhylkhgirjhlyp/auth/users) or through the [UI](http://localhost:5173/register)
+You can create your own user via the [Supabase dashboard](https://supabase.com/dashboard/project/odmtnqdhylkhgirjhlyp/auth/users) or through the [UI](https://localhost:5173/register)
 
 ## Notes
 
