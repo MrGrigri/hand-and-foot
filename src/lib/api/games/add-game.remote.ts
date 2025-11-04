@@ -3,14 +3,14 @@ import { addGameSchema } from '$lib/schemas/add-game-schema';
 import { error, redirect } from '@sveltejs/kit';
 import { getGames } from './get-games.remote';
 
-export const addGame = form(addGameSchema, async ({ title, players }) => {
+export const addGame = form(addGameSchema, async ({ title, teams }) => {
 	const {
 		locals: { supabase }
 	} = getRequestEvent();
 
 	const { data, error: supabaseError } = await supabase
 		.from('games')
-		.insert({ title, players })
+		.insert({ title, total_teams: teams })
 		.select();
 
 	if (supabaseError) {

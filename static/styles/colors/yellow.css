@@ -1,0 +1,50 @@
+@property --yellow-100 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#fff7d6, #332e1b);
+}
+@property --yellow-200 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#f8e6a0, #533f04);
+}
+@property --yellow-300 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#f5cd47, #7f5f01);
+}
+@property --yellow-400 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#e2b203, #946f00);
+}
+@property --yellow-500 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#cf9f02, #b38600);
+}
+@property --yellow-600 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#b38600, #cf9f02);
+}
+@property --yellow-700 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#946f00, #e2b203);
+}
+@property --yellow-800 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#7f5f01, #f5cd47);
+}
+@property --yellow-900 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#533f04, #f8e6a0);
+}
+@property --yellow-1000 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#332e1b, #fff7d6);
+}

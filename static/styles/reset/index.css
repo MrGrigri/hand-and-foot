@@ -39,6 +39,9 @@
 
 :is(p, li, figcaption) {
 	text-wrap: pretty;
+}
+
+:is(p, li, figcaption):not([class]) {
 	max-width: var(--_text-max-width);
 }
 

@@ -2,8 +2,8 @@ import * as v from 'valibot';
 
 export const addGameSchema = v.object({
 	title: v.pipe(v.string('Title must be a string'), v.nonEmpty('Title is required')),
-	players: v.pipe(
-		v.picklist(['4', '6', '8'], 'Player must be either 4, 6, or 8'),
+	teams: v.pipe(
+		v.picklist(['2', '3', '4'], 'Teams must be either 2, 3, or 4'),
 		v.transform((value) => Number(value))
 	)
 });

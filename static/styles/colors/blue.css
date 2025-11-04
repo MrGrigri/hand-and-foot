@@ -1,0 +1,50 @@
+@property --blue-100 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#e9f2ff, #1c2b41);
+}
+@property --blue-200 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#cce0ff, #09326c);
+}
+@property --blue-300 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#85b8ff, #0055cc);
+}
+@property --blue-400 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#579dff, #0c66e4);
+}
+@property --blue-500 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#388bff, #1d7afc);
+}
+@property --blue-600 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#1d7afc, #388bff);
+}
+@property --blue-700 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#0c66e4, #579dff);
+}
+@property --blue-800 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#0055cc, #85b8ff);
+}
+@property --blue-900 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#09326c, #cce0ff);
+}
+@property --blue-1000 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#1c2b41, #e9f2ff);
+}

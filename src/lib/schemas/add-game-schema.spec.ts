@@ -4,18 +4,18 @@ import { addGameSchema } from './add-game-schema';
 import { faker } from '@faker-js/faker';
 
 describe('addGameSchema', () => {
-	it('Should have a title and players', () => {
+	it('Should have a title and teams', () => {
 		const fakeTitle = faker.word.words(2);
-		const fakePlayers = faker.helpers.arrayElement(['4', '6', '8']);
+		const fakeTeams = faker.helpers.arrayElement(['2', '3', '4']);
 		const result = v.safeParse(addGameSchema, {
 			title: fakeTitle,
-			players: fakePlayers
+			teams: fakeTeams
 		});
 
 		expect(result.success).toBe(true);
 		expect(result.output).toEqual({
 			title: fakeTitle,
-			players: Number(fakePlayers)
+			teams: Number(fakeTeams)
 		});
 	});
 
@@ -63,8 +63,8 @@ describe('addGameSchema', () => {
 		});
 	});
 
-	describe('players', () => {
-		it('Should be unsuccessful if no players are passed', () => {
+	describe('teams', () => {
+		it('Should be unsuccessful if no teams are passed', () => {
 			const fakeTitle = faker.word.words(2);
 
 			const result = v.safeParse(addGameSchema, {
@@ -74,22 +74,22 @@ describe('addGameSchema', () => {
 			expect(result.success).toBe(false);
 			expect(result.issues?.[0].kind).toBe('schema');
 			expect(result.issues?.[0].message).toBe(
-				'Invalid key: Expected "players" but received undefined'
+				'Invalid key: Expected "teams" but received undefined'
 			);
 		});
 
-		it('Should be unsuccessful if a play passed is not 4, 6, or 8', () => {
+		it('Should be unsuccessful if a teams passed is not 2, 3, or 4', () => {
 			const fakeTitle = faker.word.words(2);
-			const fakePlayers = faker.helpers.arrayElement(['1', '2', '3', '5', '7', '9']);
+			const fakeTeams = faker.helpers.arrayElement(['1', '5', '7', '9']);
 
 			const result = v.safeParse(addGameSchema, {
 				title: fakeTitle,
-				players: fakePlayers
+				teams: fakeTeams
 			});
 
 			expect(result.success).toBe(false);
 			expect(result.issues?.[0].kind).toBe('schema');
-			expect(result.issues?.[0].message).toBe('Player must be either 4, 6, or 8');
+			expect(result.issues?.[0].message).toBe('Teams must be either 2, 3, or 4');
 		});
 	});
 });
