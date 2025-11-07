@@ -63,6 +63,8 @@
 }
 
 :is(a:not([class])) {
+	display: flex;
+	align-items: center;
 	color: var(--_anchor-color);
 	text-decoration: underline;
 	text-underline-offset: var(--_anchor-underline-offset-enter);

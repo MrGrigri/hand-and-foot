@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { faker } from '@faker-js/faker';
 	import { mdiChevronRight } from '@mdi/js';
-	import { isHttpError, type SubmitFunction } from '@sveltejs/kit';
+	import { isHttpError } from '@sveltejs/kit';
 
 	import { getGames } from '$lib/api/games/get-games.remote';
-	import { getRandomTagline } from '$lib/api/taglines/get-random-tagline.remote';
 	import Icon from '$lib/components/icon/Icon.svelte';
 	import { capitalizeAllWords } from '$lib/helpers';
 	import { addToast } from '$lib/stores';
@@ -15,7 +14,6 @@
 	let dialogElement = $state<HTMLDialogElement>();
 	let newGameTitle = $state<string>();
 	let isSubmitting = $state(false);
-	let getGamesResponse = getGames();
 
 	let { title, teams } = addGame.fields;
 
@@ -60,14 +58,12 @@
 	<button type="button" onclick={handleAddNewGameClick}>Add New Game</button>
 </header>
 
-<div>
-	{#if getGamesResponse.error}
-		<p>Something went wrong</p>
-	{:else if getGamesResponse.loading}
-		<p>Loading...</p>
-	{:else}
+{#await getGames()}
+	<p>Loading games…</p>
+{:then games}
+	<div>
 		<ul>
-			{#each getGamesResponse.current as game (game.id)}
+			{#each games as game (game.id)}
 				<li>
 					<p>{game.title}</p>
 					<p>
@@ -75,20 +71,22 @@
 							>{getDateString(game.last_played_at)}</time
 						>
 					</p>
-					<p>{game.total_teams}</p>
-					<p>{game.current_round}</p>
+					<p>No. Teams: {game.total_teams}</p>
+					<p>Curr. Round: {game.current_round}</p>
 					<a
 						href={`/dashboard/${game.id}`}
 						aria-label={`View more details for ${game.title}`}
 						data-sveltekit-prefetch
 					>
-						<Icon path={mdiChevronRight} />
+						Go to game <Icon path={mdiChevronRight} />
 					</a>
 				</li>
 			{/each}
 		</ul>
-	{/if}
-</div>
+	</div>
+{:catch _err}
+	<p>Failed to load games</p>
+{/await}
 
 <dialog bind:this={dialogElement}>
 	<header>
