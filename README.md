@@ -23,6 +23,18 @@ You need to create some certificates so that development can run on HTTPS.
 
 `npm run certs:install`: Installs the certificates using [mkcert](https://mkcert.org/) and via [homebrew](https://brew.sh/). You may need to give execution operation to the [create-certs.sh](file://./.dev/create-certs.sh) and [check-certs.sh](file://./.dev/check-certs.sh) files so that NPM can execute them properly. You can achieve this by running `chmod +x ./.dev/create-certs.sh ./.dev/check-certs.sh`.
 
+### Trusting Certificates
+
+#### Omarchy
+
+Follow the steps outlines on the [Arch Wiki](https://wiki.archlinux.org/title/User:Grawity/Adding_a_trusted_CA_certificate).
+
+- Copy the the public certificate to the appropriate file location as root
+    - `sudo cp ./.dev/certs/dev.handandfoot.pem /etc/ca-certificates/trust-source/anchors/`
+- Run update as root
+    - `update-ca-trust`
+- Start dev server
+
 ### NPM Scripts
 
 `npm run dev`: Starts the dev server [locally](https://localhost:5173/).
