@@ -1,8 +1,6 @@
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
-
-const isV4UUID = (id: string): boolean =>
-	/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(id);
+import { isV4UUID } from '$lib/helpers/is-v4-uuid';
 
 export const load: PageLoad = ({ params }) => {
 	if (!isV4UUID(params.gameId)) {

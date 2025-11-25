@@ -63,7 +63,7 @@
 }
 
 :is(a:not([class])) {
-	display: flex;
+	display: inline-flex;
 	align-items: center;
 	color: var(--_anchor-color);
 	text-decoration: underline;
