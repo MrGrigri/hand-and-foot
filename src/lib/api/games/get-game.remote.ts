@@ -3,8 +3,8 @@ import { getGameSchema } from '$lib/schemas/get-game-schema';
 import { isV4UUID } from '$lib/helpers/is-v4-uuid';
 import { error } from '@sveltejs/kit';
 import type { Game } from '$lib/types/database/games';
-import type { RoundScore } from '$lib/types/database/round-scores';
-import type { GameTeam } from '$lib/types/database/game-teams';
+import type { RoundScore, RoundScores } from '$lib/types/database/round-scores';
+import type { GameTeam, GameTeams } from '$lib/types/database/game-teams';
 
 export const getGame = query(getGameSchema, async (id) => {
 	const {
@@ -43,9 +43,9 @@ export const getGame = query(getGameSchema, async (id) => {
 		});
 
 		return {
-			game: gameResult,
-			teams: teamResult,
-			rounds: roundResult
+			game: gameResult as Game,
+			teams: teamResult as GameTeams,
+			rounds: roundResult as RoundScores
 		};
 	} catch {
 		return error(500, {

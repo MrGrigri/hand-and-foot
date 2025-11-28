@@ -10,7 +10,12 @@
 	<p>Getting data.</p>
 {:then gameData}
 	{#if !gameData.rounds?.length || !gameData.teams?.length}
-		<h2>{gameData.game?.title}</h2>
+		<hgroup>
+			<h2>{gameData.game?.title}</h2>
+			<p>
+				{new Date(gameData.game?.last_played_at).toDateString()} | {gameData.game?.total_teams} teams
+			</p>
+		</hgroup>
 		<NewGame />
 	{:else}
 		<pre>{JSON.stringify(gameData, null, 2)}</pre>
