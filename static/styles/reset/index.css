@@ -39,6 +39,9 @@
 
 :is(p, li, figcaption) {
 	text-wrap: pretty;
+}
+
+:is(p, li, figcaption):not([class]) {
 	max-width: var(--_text-max-width);
 }
 
@@ -60,6 +63,8 @@
 }
 
 :is(a:not([class])) {
+	display: inline-flex;
+	align-items: center;
 	color: var(--_anchor-color);
 	text-decoration: underline;
 	text-underline-offset: var(--_anchor-underline-offset-enter);

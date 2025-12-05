@@ -1,6 +1,7 @@
+import { type Handle, redirect } from '@sveltejs/kit';
+
 import { AUTHENTICATED_ROUTES, UNAUTHENTICATED_ROUTES } from '$lib/constants';
 import { stringContainsAnyFromArray } from '$lib/helpers';
-import { type Handle, redirect } from '@sveltejs/kit';
 
 export const authGuardHandle: Handle = async ({ event, resolve }) => {
 	if (event.url.pathname.startsWith('/.well-known')) {

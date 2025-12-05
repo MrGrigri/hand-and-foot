@@ -1,0 +1,50 @@
+@property --red-100 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#ffeceb, #42221f);
+}
+@property --red-200 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#ffd5d2, #5d1f1a);
+}
+@property --red-300 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#fd9891, #ae2e24);
+}
+@property --red-400 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#f87168, #c9372c);
+}
+@property --red-500 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#f15b50, #e2483d);
+}
+@property --red-600 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#e2483d, #f15b50);
+}
+@property --red-700 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#c9372c, #f87168);
+}
+@property --red-800 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#ae2e24, #fd9891);
+}
+@property --red-900 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#5d1f1a, #ffd5d2);
+}
+@property --red-1000 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#42221f, #ffeceb);
+}

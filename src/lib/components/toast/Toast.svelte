@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { removeToast } from '$lib/stores';
-	import { mdiClose } from '@mdi/js';
-	import Icon from '../icon/Icon.svelte';
 	import { onMount } from 'svelte';
+
+	import Icon from '../icon/Icon.svelte';
 
 	let { path, message, children } = $props();
 

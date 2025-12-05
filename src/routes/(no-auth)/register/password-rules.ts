@@ -1,12 +1,4 @@
-export type Rule = {
-	key: string;
-	regex: RegExp;
-	errorDescription: string;
-};
-
-export type Rules = Array<Rule>;
-
-export type ValidateRulesResponse = { errors: Array<string>; progress: number };
+import type { Rules, ValidateRulesResponse } from '$lib/types/rules/rules';
 
 export const validateRules = (value: string, rules: Rules): ValidateRulesResponse => {
 	let errors: Array<string> = [];

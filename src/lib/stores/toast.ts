@@ -1,26 +1,24 @@
 import {
-	mdiHelpCircleOutline,
-	mdiInformationSlabCircleOutline,
+	mdiAlertOutline,
 	mdiAlertRhombusOutline,
-	mdiAlertOutline
+	mdiHelpCircleOutline,
+	mdiInformationSlabCircleOutline
 } from '@mdi/js';
+
+import type {
+	AddToastFunction,
+	GetToastIconFunction,
+	RemoveToastFunction,
+	Toast
+} from '$lib/types/toast/toast';
+
 import { SvelteMap } from 'svelte/reactivity';
 
-export type ToastTypes = 'default' | 'info' | 'warning' | 'error';
-export type Toast = {
-	id: string;
-	message: string;
-	type: ToastTypes;
-};
-export type AddToastFunction = (message: string, type?: ToastTypes, delay?: number) => void;
-export type RemoveToastFunction = (toastId: string) => string;
-export type GetToastIconFunction = (type: ToastTypes) => string;
-
 export const toasts = new SvelteMap<string, Toast>();
-export const timeoutIds = new SvelteMap<string, number>();
+export const timeoutIds = new SvelteMap<string, NodeJS.Timeout>();
 
 export const addToast: AddToastFunction = (message, type = 'default', delay = 3000) => {
-	const toastId = window.crypto.randomUUID();
+	const toastId = crypto.randomUUID();
 
 	toasts.set(toastId, {
 		id: toastId,
@@ -29,7 +27,7 @@ export const addToast: AddToastFunction = (message, type = 'default', delay = 30
 	});
 	timeoutIds.set(
 		toastId,
-		window.setTimeout(() => removeToast(toastId), delay)
+		setTimeout(() => removeToast(toastId), delay)
 	);
 };
 
@@ -37,9 +35,13 @@ export const removeToast: RemoveToastFunction = (toastId) => {
 	toasts.delete(toastId);
 	timeoutIds.delete(toastId);
 
-	window.clearTimeout(timeoutIds.get(toastId));
+	clearTimeout(timeoutIds.get(toastId));
 
 	return toastId;
+};
+
+export const removeAllToasts = (): void => {
+	toasts.forEach((toast) => toasts.delete(toast.id));
 };
 
 export const getToastIcon: GetToastIconFunction = (type) => {

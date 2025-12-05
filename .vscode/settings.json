@@ -1,6 +1,26 @@
 {
-	"cSpell.words": ["appspecific", "Fira", "treeify", "urlset", "wght"],
-	"kiroAgent.configureMCP": "Disabled",
+	"cSpell.words": [
+		"appspecific",
+		"closedby",
+		"commandfor",
+		"Fira",
+		"handandfoot",
+		"lastmod",
+		"picklist",
+		"treeify",
+		"urlset",
+		"wght"
+	],
+	"cSpell.ignorePaths": [
+		"package-lock.json",
+		"node_modules",
+		"vscode-extension",
+		".git/{info,lfs,logs,refs,objects}/**",
+		".git/{index,*refs,*HEAD}",
+		".vscode",
+		".vscode-insiders",
+		".dev"
+	],
 	"sqltools.connections": [
 		{
 			"ssh": "Disabled",
@@ -10,5 +30,12 @@
 			"name": "supabase:hand-and-foot",
 			"connectString": "postgresql://postgres:20OlFh1Tl0sWqfmp@db.odmtnqdhylkhgirjhlyp.supabase.co:5432/postgres"
 		}
-	]
+	],
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "always"
+	},
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.tabSize": 2,
+	"editor.insertSpaces": true
 }

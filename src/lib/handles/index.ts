@@ -1,2 +1,2 @@
-export * from './supabase-handle';
 export * from './auth-guard-handle';
+export * from './supabase-handle';

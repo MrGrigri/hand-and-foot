@@ -4,10 +4,12 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "npm run certs:check && vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
+		"certs:check": "./.dev/check-certs.sh",
+		"certs:install": "./.dev/create-certs.sh",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
@@ -28,7 +30,6 @@
 		"eslint-config-prettier": "^10.0.1",
 		"eslint-plugin-svelte": "^3.0.0",
 		"globals": "^16.0.0",
-		"playwright": "^1.53.0",
 		"prettier": "^3.4.2",
 		"prettier-plugin-svelte": "^3.3.3",
 		"svelte": "^5.0.0",
@@ -45,11 +46,10 @@
 		"@supabase/supabase-js": "^2.50.2",
 		"@vercel/analytics": "^1.5.0",
 		"@vercel/speed-insights": "^1.2.0",
-		"zod": "^3.25.67",
-		"zod-form-data": "^3.0.0"
+		"valibot": "^1.1.0"
 	},
 	"volta": {
-		"node": "24.9.0",
+		"node": "22.20.0",
 		"npm": "11.6.1"
 	}
 }

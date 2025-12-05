@@ -1,0 +1,50 @@
+@property --purple-100 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#f3f0ff, #2b273f);
+}
+@property --purple-200 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#dfd8fd, #352c63);
+}
+@property --purple-300 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#b8acf6, #5e4db2);
+}
+@property --purple-400 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#9f8fef, #6e5dc6);
+}
+@property --purple-500 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#8f7ee7, #8270db);
+}
+@property --purple-600 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#8270db, #8f7ee7);
+}
+@property --purple-700 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#6e5dc6, #9f8fef);
+}
+@property --purple-800 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#5e4db2, #b8acf6);
+}
+@property --purple-900 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#352c63, #dfd8fd);
+}
+@property --purple-1000 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#2b273f, #f3f0ff);
+}

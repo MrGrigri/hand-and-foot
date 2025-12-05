@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- created with Free Online Sitemap Generator https://sitemap-generator.org/ -->
+  <url>
+    <loc>https://www.handandfoot.app/</loc>
+    <lastmod>2025-10-27T16:09:33.152Z</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://www.handandfoot.app/how-to</loc>
+    <lastmod>2025-10-27T16:09:33.152Z</lastmod>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://www.handandfoot.app/login</loc>
+    <lastmod>2025-10-27T16:09:33.152Z</lastmod>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://www.handandfoot.app/register</loc>
+    <lastmod>2025-10-27T16:09:33.152Z</lastmod>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://www.handandfoot.app/reset</loc>
+    <lastmod>2025-10-27T16:09:33.152Z</lastmod>
+    <priority>0.30</priority>
+  </url>
+</urlset>
