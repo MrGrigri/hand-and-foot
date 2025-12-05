@@ -1,0 +1,50 @@
+@property --green-100 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#dcfff1, #1c3329);
+}
+@property --green-200 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#baf3db, #164b35);
+}
+@property --green-300 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#7ee2b8, #216e4e);
+}
+@property --green-400 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#4bce97, #1f845a);
+}
+@property --green-500 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#2abb7f, #22a06b);
+}
+@property --green-600 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#22a06b, #2abb7f);
+}
+@property --green-700 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#1f845a, #4bce97);
+}
+@property --green-800 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#216e4e, #7ee2b8);
+}
+@property --green-900 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#164b35, #baf3db);
+}
+@property --green-1000 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#1c3329, #dcfff1);
+}

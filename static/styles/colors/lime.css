@@ -1,0 +1,50 @@
+@property --lime-100 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#efffd6, #28311b);
+}
+@property --lime-200 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#d3f1a7, #37471f);
+}
+@property --lime-300 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#b3df72, #4c6b1f);
+}
+@property --lime-400 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#94c748, #5b7f24);
+}
+@property --lime-500 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#82b536, #6a9a23);
+}
+@property --lime-600 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#6a9a23, #82b536);
+}
+@property --lime-700 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#5b7f24, #94c748);
+}
+@property --lime-800 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#4c6b1f, #b3df72);
+}
+@property --lime-900 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#37471f, #d3f1a7);
+}
+@property --lime-1000 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#28311b, #efffd6);
+}

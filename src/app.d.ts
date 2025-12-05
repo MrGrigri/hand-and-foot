@@ -17,7 +17,7 @@ declare global {
 			claims: Nullish<JwtPayload>;
 		}
 		interface PageData {
-			session: Session | null;
+			claims: Nullish<JwtPayload>;
 		}
 		// interface PageState {}
 		// interface Platform {}

@@ -1,0 +1,50 @@
+@property --magenta-100 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#ffecf8, #3d2232);
+}
+@property --magenta-200 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#fdd0ec, #50253f);
+}
+@property --magenta-300 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#f797d2, #943d73);
+}
+@property --magenta-400 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#e774bb, #ae4787);
+}
+@property --magenta-500 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#da62ac, #cd519d);
+}
+@property --magenta-600 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#cd519d, #da62ac);
+}
+@property --magenta-700 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#ae4787, #e774bb);
+}
+@property --magenta-800 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#943d73, #f797d2);
+}
+@property --magenta-900 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#50253f, #fdd0ec);
+}
+@property --magenta-1000 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#3d2232, #ffecf8);
+}

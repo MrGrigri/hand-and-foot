@@ -25,7 +25,7 @@ export const supabaseHandle: Handle = async ({ event, resolve }) => {
 
 		const { data: claimsData, error } = await event.locals.supabase.auth.getClaims();
 
-		if (error) return { session: null, claims: null };
+		if (error || !claimsData) return { session: null, claims: null };
 
 		return { session: sessionData?.session, claims: claimsData?.claims };
 	};

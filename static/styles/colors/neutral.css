@@ -1,0 +1,50 @@
+@property --neutral-100 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#f7f8f9, #1d2125);
+}
+@property --neutral-200 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#f1f2f4, #22272b);
+}
+@property --neutral-300 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#dcdfe4, #2c333a);
+}
+@property --neutral-400 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#b3b9c4, #454f59);
+}
+@property --neutral-500 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#8590a2, #596773);
+}
+@property --neutral-600 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#758195, #738496);
+}
+@property --neutral-700 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#626f86, #8c9bab);
+}
+@property --neutral-800 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#44546f, #9fadbc);
+}
+@property --neutral-900 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#2c3e5d, #b6c2cf);
+}
+@property --neutral-1000 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#172b4d, #c7d1db);
+}

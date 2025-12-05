@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "Sveltekit": {
+      "url": "https://mcp.svelte.dev/mcp",
+      "type": "http"
+    },
+    "Supabase": {
+      "url": "https://mcp.supabase.com/mcp?project_ref=odmtnqdhylkhgirjhlyp",
+      "type": "http"
+    },
+    "Vercel": {
+      "url": "https://mcp.vercel.com",
+      "type": "http"
+    }
+  }
+}

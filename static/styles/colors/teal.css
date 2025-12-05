@@ -1,0 +1,50 @@
+@property --teal-100 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#e7f9ff, #1e3137);
+}
+@property --teal-200 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#c6edfb, #164555);
+}
+@property --teal-300 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#9dd9ee, #206a83);
+}
+@property --teal-400 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#6cc3e0, #227d9b);
+}
+@property --teal-500 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#42b2d7, #2898bd);
+}
+@property --teal-600 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#2898bd, #42b2d7);
+}
+@property --teal-700 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#227d9b, #6cc3e0);
+}
+@property --teal-800 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#206a83, #9dd9ee);
+}
+@property --teal-900 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#164555, #c6edfb);
+}
+@property --teal-1000 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#1e3137, #e7f9ff);
+}

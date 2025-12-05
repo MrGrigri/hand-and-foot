@@ -5,18 +5,18 @@
 	import { SUPABASE_AUTH } from '$lib/constants';
 
 	let { data: propData, children } = $props();
-	let { session, supabase } = $derived(propData);
+	let { supabase, claims } = $derived(propData);
 
 	$effect(() => {
 		const { data } = supabase.auth.onAuthStateChange((_, newSession) => {
-			if (newSession?.expires_at !== session?.expires_at) invalidate(SUPABASE_AUTH);
+			if (newSession?.expires_at !== claims?.exp) invalidate(SUPABASE_AUTH);
 		});
 
 		return () => data.subscription.unsubscribe();
 	});
 </script>
 
-<SiteHeader isLoggedIn={!!session} />
+<SiteHeader isLoggedIn={!!claims} />
 
 <main>
 	{@render children()}

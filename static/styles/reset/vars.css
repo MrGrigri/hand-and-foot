@@ -9,7 +9,7 @@
 
 	--_text-max-width: var(--reset-text-max-width, 65ch);
 
-	--_anchor-color: var(--reset-anchor-color, light-dark(#0000ee, #8888f7));
+	--_anchor-color: var(--reset-anchor-color, light-dark(#0000ee, #9a9afc));
 	--_anchor-duration: var(--reset-anchor-duration, 75ms);
 	--_anchor-underline-offset-enter: var(--reset-anchor-underline-offset-enter, 2px);
 	--_anchor-underline-offset-exit: var(--reset-anchor-underline-offset-exit, 4px);

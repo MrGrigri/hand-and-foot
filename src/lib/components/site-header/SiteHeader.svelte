@@ -1,5 +1,11 @@
 <script lang="ts">
+	import { logout } from '$lib/api/auth';
+
 	let { isLoggedIn = false } = $props();
+
+	const handleButtonLogout = async () => {
+		await logout();
+	};
 </script>
 
 <header>
@@ -13,9 +19,7 @@
 					<a href="/dashboard">Dashboard</a>
 				</li>
 				<li>
-					<form action="/auth?/logout" method="POST">
-						<button type="submit">Logout</button>
-					</form>
+					<button type="button" onclick={handleButtonLogout}>Logout</button>
 				</li>
 			{:else}
 				<li><a href="/login">Login</a></li>

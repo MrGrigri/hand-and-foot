@@ -1,0 +1,50 @@
+@property --orange-100 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#fff3eb, #38291e);
+}
+@property --orange-200 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#fedec8, #702e00);
+}
+@property --orange-300 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#fec195, #a54800);
+}
+@property --orange-400 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#fea362, #c25100);
+}
+@property --orange-500 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#f38a3f, #e56910);
+}
+@property --orange-600 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#e56910, #f38a3f);
+}
+@property --orange-700 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#c25100, #fea362);
+}
+@property --orange-800 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#a54800, #fec195);
+}
+@property --orange-900 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#702e00, #fedec8);
+}
+@property --orange-1000 {
+	syntax: '<color>';
+	inherits: false;
+	initial-value: light-dark(#38291e, #fff3eb);
+}
