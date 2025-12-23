@@ -3,11 +3,11 @@
 	--_heading-font-family: var(--reset-heading-font-family, serif);
 	--_code-font-family: var(--reset-code-font-family, monospace);
 
-	--_border-width: var(--reset-border-width, 1px);
+	--_border-size: var(--reset-border-size, 1px);
 	--_border-color: var(--reset-border-color, light-dark(#000000, #ffffff));
 	--_border-style: var(--reset-border-style, solid);
 
-	--_text-max-width: var(--reset-text-max-width, 65ch);
+	--_text-max-inline-size: var(--reset-text-max-inline-size, 65ch);
 
 	--_anchor-color: var(--reset-anchor-color, light-dark(#0000ee, #9a9afc));
 	--_anchor-duration: var(--reset-anchor-duration, 75ms);

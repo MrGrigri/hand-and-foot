@@ -10,7 +10,7 @@ export const addGame = form(addGameSchema, async ({ title, teams }) => {
 
 	const { data, error: supabaseError } = await supabase
 		.from('games')
-		.insert({ title, total_teams: teams })
+		.insert({ title, total_teams: teams.length })
 		.select();
 
 	if (supabaseError) {
@@ -19,7 +19,21 @@ export const addGame = form(addGameSchema, async ({ title, teams }) => {
 		});
 	}
 
+	const gameUUID = data[0].id;
+	const teamData = teams.map((team, idx) => ({
+		game_id: gameUUID,
+		team_name: team.name,
+		order: idx
+	}));
+	const { error: gameTeamsError } = await supabase.from('game_teams').insert(teamData).select();
+
+	if (gameTeamsError) {
+		return error(500, {
+			message: 'Something went wrong'
+		});
+	}
+
 	await getGames().refresh();
 
-	return redirect(303, `/dashboard/${data[0].id}`);
+	return redirect(303, `/dashboard/${gameUUID}`);
 });
