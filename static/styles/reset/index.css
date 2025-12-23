@@ -42,11 +42,11 @@
 }
 
 :is(p, li, figcaption):not([class]) {
-	max-width: var(--_text-max-width);
+	max-inline-size: var(--_text-max-inline-size);
 }
 
 :is(fieldset) {
-	border: var(--_border-width) var(--_border-style) var(--_border-color);
+	border: var(--_border-size) var(--_border-style) var(--_border-color);
 }
 
 :is(legend) {
@@ -107,7 +107,7 @@
 }
 
 :is(dialog) {
-	border: var(--_border-width) var(--_border-style) var(--_border-color);
+	border: var(--_border-size) var(--_border-style) var(--_border-color);
 }
 
 :is(:target) {

@@ -21,21 +21,28 @@
 		".vscode-insiders",
 		".dev"
 	],
-	"sqltools.connections": [
-		{
-			"ssh": "Disabled",
-			"previewLimit": 50,
-			"server": "localhost",
-			"driver": "PostgreSQL",
-			"name": "supabase:hand-and-foot",
-			"connectString": "postgresql://postgres:20OlFh1Tl0sWqfmp@db.odmtnqdhylkhgirjhlyp.supabase.co:5432/postgres"
-		}
-	],
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": "always"
 	},
 	"editor.formatOnSave": true,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.tabSize": 2,
-	"editor.insertSpaces": true
+	"editor.insertSpaces": true,
+	"workbench.editor.customLabels.enabled": true,
+	"workbench.editor.customLabels.patterns": {
+		"**/src/**/*.css": "${filename} 🎨",
+		"**/src/**/*.{js,ts}": "${filename}",
+		/** SVELTE */
+		"**/src/**/*.svelte": "${filename}",
+		/** SVELTEKIT */
+		"**/src/routes/**/+page.svelte": "${dirname(0)} (+page)",
+		"**/src/routes/**/+page.{js,ts}": "${dirname(0)} (+page.${extname})",
+		"**/src/routes/**/+page.server.{js,ts}": "${dirname(0)} (+page.server.${extname})",
+		"**/src/routes/**/+layout.svelte": "${dirname(0)} (+layout)",
+		"**/src/routes/**/+layout.{js,ts}": "${dirname(0)} (+layout.${extname})",
+		"**/src/routes/**/+layout.server.{js,ts}": "${dirname(0)} (+layout.server.${extname})",
+		"**/src/**/api/**/*.remote.{js,ts}**": "${filename} (Remote)",
+		"**/src/hooks.client.{js,ts}": "${filename} (Client)",
+		"**/src/hooks.server.{js,ts}": "${filename} (Server)"
+	}
 }

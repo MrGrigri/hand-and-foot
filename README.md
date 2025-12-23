@@ -17,6 +17,8 @@ PUBLIC_SUPABASE_API_KEY="{SUPABASE_ANON_KEY}"
 PRIVATE_SUPABASE_DB_PASSWORD="{SUPABASE_DB_PASSWORD}"
 ```
 
+The values are also stored in 1Password under `developer > environments`.
+
 ### Creating Certificates
 
 You need to create some certificates so that development can run on HTTPS.
@@ -30,9 +32,9 @@ You need to create some certificates so that development can run on HTTPS.
 Follow the steps outlines on the [Arch Wiki](https://wiki.archlinux.org/title/User:Grawity/Adding_a_trusted_CA_certificate).
 
 - Copy the the public certificate to the appropriate file location as root
-    - `sudo cp ./.dev/certs/dev.handandfoot.pem /etc/ca-certificates/trust-source/anchors/`
+  - `sudo cp ./.dev/certs/dev.handandfoot.pem /etc/ca-certificates/trust-source/anchors/`
 - Run update as root
-    - `update-ca-trust`
+  - `update-ca-trust`
 - Start dev server
 
 ### NPM Scripts

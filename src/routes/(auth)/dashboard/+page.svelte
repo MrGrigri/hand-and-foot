@@ -1,21 +1,14 @@
 <script lang="ts">
 	import { faker } from '@faker-js/faker';
 	import { mdiChevronRight } from '@mdi/js';
-	import { isHttpError } from '@sveltejs/kit';
 
 	import { getGames } from '$lib/api/games/get-games.remote';
 	import Icon from '$lib/components/icon/Icon.svelte';
 	import { capitalizeAllWords } from '$lib/helpers';
-	import { addToast } from '$lib/stores';
-	import { addGame } from '$lib/api/games/add-game.remote';
-	import { addGameSchema } from '$lib/schemas/add-game-schema';
-	import type { RemoteFormEnhanceCallback } from '$lib/types/utils/enhance-callback';
+	import NewGameForm from './components/NewGameForm.svelte';
 
 	let dialogElement = $state<HTMLDialogElement>();
 	let newGameTitle = $state<string>();
-	let isSubmitting = $state(false);
-
-	let { title, teams } = addGame.fields;
 
 	const handleAddNewGameClick = () => {
 		newGameTitle = capitalizeAllWords(`${faker.word.adjective()} ${faker.word.noun()}`);
@@ -23,28 +16,8 @@
 	};
 
 	const handleCloseModalClick = (e: MouseEvent & { currentTarget: HTMLButtonElement }) => {
-		const { currentTarget } = e;
-
-		if (!('command' in currentTarget)) {
+		if (!('command' in e.currentTarget)) {
 			dialogElement?.close();
-		}
-	};
-
-	const handleAddNewGameSubmit: RemoteFormEnhanceCallback = async ({ submit }) => {
-		try {
-			isSubmitting = true;
-
-			await submit();
-
-			addToast('Game added', 'info');
-
-			dialogElement?.close();
-		} catch (error) {
-			if (isHttpError(error)) {
-				addToast(error.body.message, 'error');
-			}
-		} finally {
-			isSubmitting = false;
 		}
 	};
 
@@ -92,47 +65,20 @@
 			<p>No games yet?!</p>
 		{/if}
 	</div>
-{:catch _err}
+{:catch}
 	<p>Failed to load games</p>
 {/await}
 
 <dialog id="new_game_dialog" closedby="any" bind:this={dialogElement}>
 	<header>
-		<p>Add new game</p>
-		<button onclick={handleCloseModalClick} command="close" commandfor="new_game_dialog"
-			>Close</button
-		>
+		<p>
+			Add new game <button
+				onclick={handleCloseModalClick}
+				command="close"
+				commandfor="new_game_dialog">Close</button
+			>
+		</p>
 	</header>
-	<form {...addGame.preflight(addGameSchema).enhance(handleAddNewGameSubmit)}>
-		<div>
-			<label for="title">Game Title</label>
-			<input required id="title" {...title.as('text')} placeholder={newGameTitle} />
-			{#if title.issues()?.[0]}
-				{@const issue = title.issues()?.[0]}
-				<p>{issue?.message}</p>
-			{/if}
-		</div>
 
-		<fieldset>
-			<legend>Number of players</legend>
-
-			{#each ['2', '3', '4'] as numberOfTeams}
-				<span>
-					<input
-						id={`${numberOfTeams}_teams`}
-						{...teams.as('radio', numberOfTeams)}
-						checked={numberOfTeams === '3' || null}
-						type="radio"
-					/>
-					<label for={`${numberOfTeams}_teams`}>{numberOfTeams}</label>
-					{#if teams.issues()?.[0]}
-						{@const issue = teams.issues()?.[0]}
-						<p>{issue?.message}</p>
-					{/if}
-				</span>
-			{/each}
-		</fieldset>
-
-		<button type="submit" disabled={isSubmitting ?? null}>Add new game</button>
-	</form>
+	<NewGameForm />
 </dialog>
