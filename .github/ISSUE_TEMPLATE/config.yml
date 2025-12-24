@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions?
+    url: https://github.com/MrGrigri/hand-and-foot/discussions
+    about: If you have general question, please join our GitHub Discussions.

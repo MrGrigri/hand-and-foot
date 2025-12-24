@@ -23,7 +23,7 @@ The values are also stored in 1Password under `developer > environments`.
 
 You need to create some certificates so that development can run on HTTPS.
 
-`npm run certs:install`: Installs the certificates using [mkcert](https://mkcert.org/) and via [homebrew](https://brew.sh/). You may need to give execution operation to the [create-certs.sh](file://./.dev/create-certs.sh) and [check-certs.sh](file://./.dev/check-certs.sh) files so that NPM can execute them properly. You can achieve this by running `chmod +x ./.dev/create-certs.sh ./.dev/check-certs.sh`.
+`npm run certs:install`: Installs the certificates using [mkcert](https://mkcert.org/) and via [homebrew](https://brew.sh/). You may need to give execution operation to the [create-certs.sh](.dev/create-certs.sh) and [check-certs.sh](.dev/check-certs.sh) files so that NPM can execute them properly. You can achieve this by running `chmod +x ./.dev/create-certs.sh ./.dev/check-certs.sh`.
 
 ### Trusting Certificates
 
