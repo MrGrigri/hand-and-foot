@@ -6,6 +6,4 @@ This project utilizes [trunk-based development](https://www.atlassian.com/contin
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
-
-Tell them where to go, how often they can expect to get an update on a reported vulnerability, what to expect if the vulnerability is accepted or declined, etc.
+Please create a [new issue](/issues/new) _and_ send an email to [our security team](mailto:security@handandfoot.app)/
