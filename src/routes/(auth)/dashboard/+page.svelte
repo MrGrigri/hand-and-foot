@@ -43,14 +43,14 @@
 			<ul>
 				{#each games as game (game.id)}
 					<li>
-						<p>{game.title}</p>
-						<p>
+						<span>{game.title} | </span>
+						<span>
 							<time datetime={getDateString(game.last_played_at)}
 								>{getDateString(game.last_played_at)}</time
-							>
-						</p>
-						<p>No. Teams: {game.total_teams}</p>
-						<p>Curr. Round: {game.current_round}</p>
+							> |
+						</span>
+						<span>No. Teams: {game.total_teams} |</span>
+						<span>Curr. Round: {game.current_round} |</span>
 						<a
 							href={`/dashboard/${game.id}`}
 							aria-label={`View more details for ${game.title}`}

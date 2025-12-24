@@ -1,21 +1,23 @@
-import { getRequestEvent, query } from '$app/server';
-import { getGameSchema } from '$lib/schemas/get-game-schema';
-import { isV4UUID } from '$lib/helpers/is-v4-uuid';
 import { error } from '@sveltejs/kit';
+
 import type { Game } from '$lib/types/database/games';
 import type { RoundScore, RoundScores } from '$lib/types/database/round-scores';
 import type { GameTeam, GameTeams } from '$lib/types/database/game-teams';
 
-export const getGame = query(getGameSchema, async (id) => {
-	const {
-		locals: { supabase }
-	} = getRequestEvent();
+import { getRequestEvent, query } from '$app/server';
+import { getGameSchema } from '$lib/schemas/get-game-schema';
+import { isV4UUID } from '$lib/helpers/is-v4-uuid';
 
+export const getGame = query(getGameSchema, async (id) => {
 	if (!isV4UUID(id)) {
 		return error(400, {
 			message: 'Not a valid ID'
 		});
 	}
+
+	const {
+		locals: { supabase }
+	} = getRequestEvent();
 
 	try {
 		const [gameResult, teamResult, roundResult] = (

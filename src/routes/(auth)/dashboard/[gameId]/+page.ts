@@ -1,5 +1,7 @@
 import { error } from '@sveltejs/kit';
+
 import type { PageLoad } from './$types';
+
 import { isV4UUID } from '$lib/helpers/is-v4-uuid';
 
 export const load: PageLoad = ({ params }) => {

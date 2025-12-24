@@ -1,7 +1,7 @@
+import { error, redirect } from '@sveltejs/kit';
+
 import { form, getRequestEvent } from '$app/server';
 import { addGameSchema } from '$lib/schemas/add-game-schema';
-import { error, redirect } from '@sveltejs/kit';
-import { getGames } from './get-games.remote';
 
 export const addGame = form(addGameSchema, async ({ title, teams }) => {
 	const {
@@ -32,8 +32,6 @@ export const addGame = form(addGameSchema, async ({ title, teams }) => {
 			message: 'Something went wrong'
 		});
 	}
-
-	await getGames().refresh();
 
 	return redirect(303, `/dashboard/${gameUUID}`);
 });

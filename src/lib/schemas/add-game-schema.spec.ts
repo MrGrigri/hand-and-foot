@@ -6,7 +6,8 @@ import { faker } from '@faker-js/faker';
 describe('addGameSchema', () => {
 	it('Should have a title and teams', () => {
 		const fakeTitle = faker.word.words(2);
-		const fakeTeams = faker.helpers.arrayElement(['2', '3', '4']);
+		const fakeName = `${faker.word.adjective()} ${faker.word.noun()}`;
+		const fakeTeams = [{ name: fakeName }];
 		const result = v.safeParse(addGameSchema, {
 			title: fakeTitle,
 			teams: fakeTeams
@@ -15,7 +16,7 @@ describe('addGameSchema', () => {
 		expect(result.success).toBe(true);
 		expect(result.output).toEqual({
 			title: fakeTitle,
-			teams: Number(fakeTeams)
+			teams: [{ name: fakeName }]
 		});
 	});
 
@@ -76,20 +77,6 @@ describe('addGameSchema', () => {
 			expect(result.issues?.[0].message).toBe(
 				'Invalid key: Expected "teams" but received undefined'
 			);
-		});
-
-		it('Should be unsuccessful if a teams passed is not 2, 3, or 4', () => {
-			const fakeTitle = faker.word.words(2);
-			const fakeTeams = faker.helpers.arrayElement(['1', '5', '7', '9']);
-
-			const result = v.safeParse(addGameSchema, {
-				title: fakeTitle,
-				teams: fakeTeams
-			});
-
-			expect(result.success).toBe(false);
-			expect(result.issues?.[0].kind).toBe('schema');
-			expect(result.issues?.[0].message).toBe('Teams must be either 2, 3, or 4');
 		});
 	});
 });
