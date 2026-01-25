@@ -9,13 +9,13 @@ export const getGames = query(async () => {
 	} = getRequestEvent();
 
 	try {
-		const res = await retry(async () => {
-			const r = await supabase.from('games').select<'*', Game>('*');
-			if (r.error) throw r.error;
-			return r;
+		return await retry(async () => {
+			const { data: supabaseData, error: supabaseError } = await supabase
+				.from('games')
+				.select<'*', Game>('*');
+			if (supabaseError) throw supabaseError;
+			return supabaseData;
 		});
-
-		return res.data;
 	} catch {
 		return error(500, {
 			message: 'Something went wrong'

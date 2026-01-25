@@ -122,7 +122,7 @@
 
 		<p>Sweet spot is three teams...five is just too much.</p>
 
-		<div class="teams">
+		<div>
 			{#each teams as { id, name }, idx (id)}
 				{@const isFirst = idx === 0}
 				{@const isSecond = idx === 1}
@@ -163,28 +163,3 @@
 		{/if}
 	</button>
 </form>
-
-<style lang="postcss">
-	:global {
-		@scope (.teams) {
-			:scope {
-				display: grid;
-				grid-template-columns: auto auto auto 1fr auto;
-				align-items: stretch;
-				gap: 0.5rem;
-				padding-block: 1rem;
-			}
-
-			.team {
-				display: grid;
-				grid-template-columns: subgrid;
-				grid-column: 1 / 6;
-			}
-
-			.team__label {
-				align-self: center;
-				justify-self: end;
-			}
-		}
-	}
-</style>

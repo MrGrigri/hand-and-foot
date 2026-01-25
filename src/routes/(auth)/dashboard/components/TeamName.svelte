@@ -33,9 +33,8 @@
 	}: TeamNameProps = $props();
 </script>
 
-<div class="team">
+<div>
 	<button
-		class="team__btn-up"
 		type="button"
 		aria-label={`Move ${labelText} up`}
 		disabled={disableUpButton}
@@ -46,7 +45,6 @@
 	</button>
 
 	<button
-		class="team__btn-down"
 		type="button"
 		aria-label={`Move ${labelText} down`}
 		disabled={disableDownButton}
@@ -56,9 +54,8 @@
 		<Icon path={mdiArrowDown} />
 	</button>
 
-	<label class="team__label" for={inputId}>{labelText}</label>
+	<label for={inputId}>{labelText}</label>
 	<input
-		class="team__input"
 		id={inputId}
 		type="text"
 		name={inputName}
@@ -68,7 +65,6 @@
 	/>
 
 	<button
-		class="team__btn-remove"
 		type="button"
 		aria-label={`Remove ${labelText} team`}
 		disabled={disableDeleteButton}

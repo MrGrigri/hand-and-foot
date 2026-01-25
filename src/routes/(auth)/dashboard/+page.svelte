@@ -10,6 +10,8 @@
 	let dialogElement = $state<HTMLDialogElement>();
 	let newGameTitle = $state<string>();
 
+	const gamesByCompleted = $derived(() => {});
+
 	const handleAddNewGameClick = () => {
 		newGameTitle = capitalizeAllWords(`${faker.word.adjective()} ${faker.word.noun()}`);
 		dialogElement?.showModal();
@@ -51,6 +53,7 @@
 						</span>
 						<span>No. Teams: {game.total_teams} |</span>
 						<span>Curr. Round: {game.current_round} |</span>
+						<span>Is Complete: {game.is_complete ? 'Yes' : 'No'}</span>
 						<a
 							href={`/dashboard/${game.id}`}
 							aria-label={`View more details for ${game.title}`}

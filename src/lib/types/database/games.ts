@@ -6,6 +6,7 @@ export type Game = {
 	owner_id: string;
 	title: string;
 	total_teams: string;
+	is_complete: boolean;
 };
 
 export type Games = Array<Game>;
